@@ -1,0 +1,66 @@
+.product-detail-page {
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: #e9e6c3;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  border: none;
+  font-weight: 600;
+  font-size: var(--font-size-18);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  background-color: #d8d4a6;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(233, 230, 195, 0.3);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablette - 1024px */
+@media (max-width: 1024px) {
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Mobile - 393px */
+@media (max-width: 393px) {
+  .product-detail-page .hero-section {
+    min-height: 400px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    padding: 0 10px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 20px;
+    line-height: 1.4;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    letter-spacing: 0px;
+    width: auto;
+    min-width: 160px;
+  }
+}

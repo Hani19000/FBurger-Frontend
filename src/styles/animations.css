@@ -1,0 +1,10 @@
+@import './reset.css';
+@import './variables.css';
+@import './typography.css';
+@import './utilities.css';
+@import './animations.css';
+body {
+font-family: var(--font-family-base);
+color: var(--color-gray-900);
+background-color: var(--color-gray-100);
+}

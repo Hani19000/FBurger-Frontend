@@ -1,0 +1,40 @@
+import { useParams, useNavigate } from 'react-router-dom';
+import HeroSection from '../components/molecules/HeroSection';
+import useProducts from "../hooks/useProducts.jsx";
+import '../styles/productdetail.css';
+
+function ProductDetail() {
+    const { id } = useParams();
+    const { data: product, loading } = useProducts(id);
+    const navigate = useNavigate();
+
+    const optimizedHeroImg = product?.image_url?.replace(/\.[^/.]+$/, ".webp");
+
+    return (
+        <main className="product-detail-page">
+            <HeroSection
+                title={loading ? "Chargement..." : product?.name}
+                subtitle={loading ? "Préparation de votre délice..." : product?.description}
+                img={loading ? "" : optimizedHeroImg}
+                isLight={true}
+            >
+                <div style={{
+                    marginTop: '20px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    opacity: loading ? 0 : 1,
+                    transition: 'opacity 0.5s ease'
+                }}>
+                    <button
+                        className="btn"
+                        onClick={() => navigate('/menu')}
+                    >
+                        ← Retour au menu
+                    </button>
+                </div>
+            </HeroSection>
+        </main>
+    );
+}
+
+export default ProductDetail;

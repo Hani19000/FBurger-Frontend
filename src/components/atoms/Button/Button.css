@@ -1,0 +1,29 @@
+/* Import des variables pour être sûr qu'elles sont là */
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  padding: 0.7rem 2rem;
+  --font-family-title-medium: var(--font-nippo);
+  --weight-title-medium: 500;
+  min-width: 10rem;
+  text-decoration: none;
+}
+
+.btnVariant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  padding: 0.7rem 2rem;
+  --font-family-heading-regular: var(--font-switzer);
+  --weight-heading-regular: 400;
+  min-width: 10rem;
+  text-decoration: none;
+}
