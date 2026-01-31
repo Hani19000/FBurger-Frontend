@@ -71,8 +71,9 @@
 .review-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Centre les éléments horizontalement */
   gap: 2rem;
+  width: 100%;
 }
 
 .review-form-group {
@@ -120,12 +121,11 @@
 
 .auth-notice {
   text-align: center;
-  padding: 3rem 0;
+  padding: 8rem 0;
   font-family: var(--font-switzer);
-  font-size: 1.1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  font-size: var(--font-size-18);
   backdrop-filter: blur(5px);
+  gap: 3rem;
 }
 
 /* --- LISTE DES AVIS (GRID) --- */
@@ -182,16 +182,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.mini-avatar {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-primary);
-  padding: 2px;
-  background: var(--color-black);
 }
 
 .comment-text {

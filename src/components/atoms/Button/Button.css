@@ -14,13 +14,9 @@
   text-decoration: none;
 }
 
-.btn,
 .btnVariant {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-primary);
-  color: var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-primary);
   border: none;
   padding: 0.7rem 2rem;
   min-width: 10rem;
@@ -29,7 +25,7 @@
   font-family: inherit; /* Pour hériter des fonts Nippo/Switzer définies plus haut */
 }
 
-/* Optionnel : effet au survol pour plus de feedback */
+/* effet au survol pour plus de feedback */
 .btn:hover,
 .btnVariant:hover {
   opacity: 0.9;

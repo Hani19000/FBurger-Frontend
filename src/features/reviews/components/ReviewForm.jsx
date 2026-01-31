@@ -31,11 +31,11 @@ const ReviewForm = ({ onSubmit }) => {
     };
 
     if (!user) return (
-        <div className="auth-notice">
-            <p>Connectez-vous pour laisser un avis.</p>
-            <div className="mt-4">
-                <Button type="btn" text="SE CONNECTER" to="/login" />
-            </div>
+        <div className='auth-notice'> {/* On garde le wrapper pour le fond texture */}
+            <p style={{ marginBottom: '1.5rem', fontFamily: 'var(--font-nippo)' }}>
+                Connectez-vous pour laisser un avis.
+            </p>
+            <Button type="btnVariant" text="SE CONNECTER" to="/login" />
         </div>
     );
 
@@ -61,7 +61,7 @@ const ReviewForm = ({ onSubmit }) => {
                     <Button
                         text="PUBLIER MON AVIS"
                         htmlType="submit"
-                        type="btn"
+                        type="btnVariant"
                         disabled={rating === 0 || !comment.trim()}
                     />
                 </form>
