@@ -1,0 +1,53 @@
+:root {
+  /* --- Colors --- */
+  --color-primary: #e6e3c0;
+  --color-white: #ffffff;
+  --color-black: #1e1e1e;
+  --color-gray: #454545;
+  --color-gray-2: #dee2e6;
+
+  /* --- Typography --- */
+
+  /* Nippo - Titles */
+  --font-nippo: 'Nippo Variable', sans-serif;
+
+  --font-family-title-light: var(--font-nippo);
+  --weight-title-light: 300;
+
+  --font-family-title-regular: var(--font-nippo);
+  --weight-title-regular: 400;
+
+  --font-family-title-medium: var(--font-nippo);
+  --weight-title-medium: 500;
+
+  --font-family-title-bold: var(--font-nippo);
+  --weight-title-bold: 700;
+
+  --font-family-title-black: var(--font-nippo);
+  --weight-title-black: 900;
+
+  /* --- SWITZER - Subtitles --- */
+  --font-switzer: 'Switzer', sans-serif;
+
+  --font-family-heading-light: var(--font-switzer);
+  --weight-heading-light: 300;
+
+  --font-family-heading-regular: var(--font-switzer);
+  --weight-heading-regular: 400;
+
+  --font-family-heading-bold: var(--font-switzer);
+  --weight-heading-bold: 700;
+
+  --font-family-heading-black: var(--font-switzer);
+  --weight-heading-black: 900;
+
+  /* --- Size --- */
+  --font-size-14: 0.875rem;
+  --font-size-15: 0.9375rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-30: 1.875rem;
+  --font-size-48: 3rem;
+  --font-size-64: 4rem;
+}

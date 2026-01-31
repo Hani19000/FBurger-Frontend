@@ -1,0 +1,54 @@
+@import './variables.css';
+
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(/images/texture.webp);
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.product-detail-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 50px;
+}
+
+.btn-back {
+  background-color: #e9e6c3;
+  color: #1a1a1a;
+  border: none;
+  padding: 12px 35px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.btn-back:hover {
+  background-color: #f1f0e2;
+  transform: scale(1.05);
+}
