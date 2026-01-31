@@ -1,12 +1,27 @@
-import { NavLink } from 'react-router-dom'
-import './Button.css'
+import { NavLink } from 'react-router-dom';
+import './Button.css';
 
-function Button({ type, text, to }) {
+function Button({ type = 'btn', text, to, onClick, htmlType = 'button', disabled }) {
+  // Si 'to' existe, c'est un lien de navigation
+  if (to) {
+    return (
+      <NavLink to={to} className={type} onClick={onClick}>
+        {text}
+      </NavLink>
+    );
+  }
+
+  // Sinon, c'est un vrai bouton (pour les formulaires ou actions)
   return (
-    <NavLink to={to} className={type}>
+    <button
+      type={htmlType}
+      className={type}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {text}
-    </NavLink>
-  )
+    </button>
+  );
 }
 
-export default Button
+export default Button;

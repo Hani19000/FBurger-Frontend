@@ -1,13 +1,14 @@
 :root {
-  /* Colors */
+  /* --- Colors --- */
   --color-primary: #e6e3c0;
   --color-white: #ffffff;
   --color-black: #1e1e1e;
   --color-gray: #454545;
   --color-gray-2: #dee2e6;
 
-  /* Typography */
-  /* Nippo - Titres */
+  /* --- Typography --- */
+
+  /* Nippo - Titles */
   --font-nippo: 'Nippo Variable', sans-serif;
 
   --font-family-title-light: var(--font-nippo);
@@ -25,7 +26,7 @@
   --font-family-title-black: var(--font-nippo);
   --weight-title-black: 900;
 
-  /* --- SWITZER (Corps / Headings) --- */
+  /* --- SWITZER - Subtitles --- */
   --font-switzer: 'Switzer', sans-serif;
 
   --font-family-heading-light: var(--font-switzer);
@@ -40,6 +41,7 @@
   --font-family-heading-black: var(--font-switzer);
   --weight-heading-black: 900;
 
+  /* --- Size --- */
   --font-size-14: 0.875rem;
   --font-size-15: 0.9375rem;
   --font-size-18: 1.125rem;

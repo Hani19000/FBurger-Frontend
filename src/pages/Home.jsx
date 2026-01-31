@@ -1,11 +1,11 @@
 import '../styles/home.css'
 import CardsGrid from "../components/atoms/CardsGrid.jsx";
 import HeroSection from '../components/molecules/HeroSection.jsx'
-import { Data } from '../config/DataHeroSection.jsx'
+import { Data } from '../Data/DataHeroSection.jsx'
 import FeatureSplit from '../components/molecules/FeatureSplit.jsx';
-import { featuredProduct } from '../config/featuresData.jsx';
-import Testimonials from '../components/layout/Testimonials.jsx'
-import { testimonialsData } from '../config/testimonialsData.jsx';
+import { featuredProduct } from '../Data/featuresData.jsx';
+import Testimonials from './Testimonials.jsx'
+import { testimonialsData } from '../Data/testimonialsData.jsx';
 
 const cardData = [
   { id: 1, name: "Burger Cramé", price: "10.00", image: "/images/card1.webp" },
@@ -24,7 +24,11 @@ function Home() {
         <CardsGrid data={cardData} title="Notre meilleure sélection..." isStatic={true} />
       </section>
 
-      <FeatureSplit data={featuredProduct} />
+      <FeatureSplit
+        data={featuredProduct}
+        showButton={true}
+        showLabel={true}
+      />
 
       <Testimonials data={testimonialsData} />
 

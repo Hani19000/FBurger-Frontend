@@ -1,6 +1,6 @@
 
 import '../src/styles/index.css'
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Menu from './pages/Menu.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
@@ -9,45 +9,53 @@ import AdminsPages from './pages/AdminsPage.jsx';
 import Review from './pages/Review.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import NavBarComponents from './components/layout/NavBar.jsx';
 import About from './pages/About.jsx';
-import FooterComponents from './components/layout/Footer.jsx';
 import ProductDetail from './pages/ProductDetail.jsx';
-import ScrollToTop from './utils/ScrollToTop.jsx';
-const AppLayout = () => {
-  return (
-    <div>
-      <ScrollToTop />
-      <NavBarComponents />
-      <Outlet />
-      <FooterComponents />
-    </div>
-  );
-}
+import { AuthProvider } from './context/AuthContext.jsx';
+import { AppLayout } from './components/layout/AppLayout.jsx';
+import ProtectedRoute from './guards/ProtecteRoute.jsx';
+import { Toaster } from 'react-hot-toast';
+import GuestGuard from './guards/GuestGuard.jsx';
+import RoleGuard from './guards/RoleGuard.jsx';
+
+<AppLayout />
 
 const router = createBrowserRouter([
   {
+    path: '/',
     element: <AppLayout />,
+    errorElement: <NotFoundPage />, // Gestion globale du 404
     children: [
-      { path: '/home', element: <Home /> },
-      { path: '/about', element: <About /> },
-      { path: '/menu', element: <Menu /> },
-      { path: "/product/:id", element: <ProductDetail /> },
-      { path: '/review', element: <Review /> },
-      { path: '/login', element: <Login /> },
-      { path: '/register', element: <Register /> },
-      { path: '*', element: <NotFoundPage /> },
-      { path: '/admins', element: <AdminsPages /> },
-      { path: '/admins/:profileId', element: <AdminPage /> },
+      { index: true, element: <Navigate to="/home" replace /> },
+      { path: 'home', element: <Home /> },
+      { path: 'about', element: <About /> },
+      { path: 'menu', element: <Menu /> },
+      { path: 'product/:id', element: <ProductDetail /> },
+
+      // Routes Publiques : uniquement pour les non-connectés
+      { path: 'login', element: <GuestGuard><Login /></GuestGuard> },
+      { path: 'register', element: <GuestGuard><Register /></GuestGuard> },
+
+      // Route Protégée : n'importe quel utilisateur connecté
+      { path: 'review', element: (<ProtectedRoute><Review /></ProtectedRoute>) },
+
+      // Routes Admin : Uniquement roleName 'admin'
+      { path: 'admins', element: <RoleGuard allowedRoles={['admin']}><AdminsPages /> </RoleGuard> },
+      { path: 'admins/:profileId', element: <RoleGuard allowedRoles={['admin']}> <AdminPage /></RoleGuard> },
+
+      // Fallback (si aucune route ne match)
+      { path: '*', element: <Navigate to="/home" replace /> }
     ]
   }
 ]);
 
-
 function App() {
   return (
-    <div>  <RouterProvider router={router} /></div>
-  )
+    <AuthProvider>
+      <Toaster position="top-right" reverseOrder={false} />
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

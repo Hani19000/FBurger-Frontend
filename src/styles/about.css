@@ -1,0 +1,76 @@
+.about-split-section {
+  padding: 15rem 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-image: url(/images/texture2.webp);
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.about-split-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  max-width: 2000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.about-split-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.about-split-image img {
+  width: 90%;
+  max-width: 750px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 40px;
+  border-bottom-right-radius: 190px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+.about-split-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.about-title {
+  font-size: var(--font-size-48);
+  font-family: var(--font-nippo);
+  font-weight: 700;
+  color: #454545;
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  top: -3rem;
+}
+
+.about-description {
+  max-width: 1000px;
+  position: relative;
+  top: -3rem;
+  right: 4rem;
+}
+
+.about-description p {
+  font-size: 30px;
+  font-family: var(--font-switzer);
+  font-weight: 400;
+  color: #454545;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+}
+
+.about-description p:last-child {
+  margin-bottom: 0;
+}

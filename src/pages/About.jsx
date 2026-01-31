@@ -1,11 +1,19 @@
-import '../styles/about.css';
+import '../styles/home.css'
+import HeroSection from '../components/molecules/HeroSection.jsx'
+import { Data } from '../Data/DataHeroSection.jsx'
+import AboutSplit from '../components/molecules/AboutSplit.jsx';
+import { aboutData } from '../Data/AboutData.jsx';
 
-const About = () => {
+function About() {
+    const heroContent = Data.find(item => item.id === 4);
+
     return (
-        <div className="about-container">
-            <h1>About Page</h1>
-        </div>
-    );
+        <>
+            <HeroSection {...heroContent} />
+            <AboutSplit data={aboutData} />
+
+        </>
+    )
 }
 
-export default About;
+export default About

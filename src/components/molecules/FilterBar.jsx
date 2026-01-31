@@ -1,4 +1,3 @@
-// src/components/molecules/FilterBar.jsx
 const CATEGORIES = ['Tout', 'Burger', 'Poulets', 'Frites', 'Boissons'];
 
 const FilterBar = ({ currentFilter, onFilterChange }) => (

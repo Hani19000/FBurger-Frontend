@@ -1,5 +1,3 @@
-
-
 export const featuredProduct = {
     title: "Notre Meilleur Menu",
     name: "Burger cramé",

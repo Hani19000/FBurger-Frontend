@@ -5,13 +5,13 @@ import { Pagination, Autoplay } from 'swiper/modules';
 // Import des styles Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
-import "../../styles/home.css";
+import "../styles/home.css";
 
 const Testimonials = ({ data }) => {
     if (!data || data.length === 0) return null;
 
     return (
-        <section className="testimonials-section" style={{ backgroundImage: `url(/images/texture2.webp)`, }}>
+        <section className="testimonials-section">
             <div className="container">
                 <h2 className="section-title">Avis des clients</h2>
 
