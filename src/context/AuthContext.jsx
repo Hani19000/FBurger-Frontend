@@ -25,12 +25,15 @@ export const AuthProvider = ({ children }) => {
     // Vérification de session au démarrage (Cookie check)
     useEffect(() => {
         const checkAuth = async () => {
-            const [res, err] = await handle(authService.me());
-            if (!err) {
+            try {
+                const res = await authService.me();
                 const userData = res.data?.data || res.data;
                 updateAuth(userData);
+            } catch {
+                setUser(null);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
         checkAuth();
     }, [updateAuth]);

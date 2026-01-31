@@ -165,3 +165,80 @@
   margin-bottom: 1rem;
   font-family: var(--font-switzer);
 }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .login-container {
+    max-width: 900px;
+    min-height: 600px;
+    margin: 0 20px;
+  }
+
+  .left-panel {
+    padding: 2rem;
+  }
+
+  .overlay-content {
+    font-size: 1.2rem;
+  }
+
+  .login-card-dark {
+    padding: 2.5rem;
+    width: 85%;
+  }
+
+  .circle-1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .circle-2 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 393px) {
+  .login-split-screen {
+    background-color: var(--color-primary); /* Cohérence fond mobile */
+  }
+
+  .login-container {
+    flex-direction: column;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .left-panel {
+    display: none; /* Masquage panel image pour focus formulaire */
+  }
+
+  .right-panel {
+    flex: 1;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .login-card-dark {
+    width: 90%;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .input-beige {
+    padding: 0.8rem;
+    font-size: 16px; /* Évite le zoom automatique iOS sur input */
+  }
+
+  .btn-container-center button {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .form-footer {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}

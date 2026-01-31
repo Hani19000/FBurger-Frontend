@@ -1,42 +1,39 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import StarRating from '../components/atoms/Star/StarRating';
 
-
-// Import des styles Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "../styles/home.css";
 
-const Testimonials = ({ data }) => {
+const Testimonials = ({ data, loading }) => {
+    if (loading) return <div className="loader">Chargement des avis...</div>;
     if (!data || data.length === 0) return null;
 
     return (
-        <section className="testimonials-section">
-            <div className="container">
-                <h2 className="section-title">Avis des clients</h2>
-
-                <Swiper
-                    modules={[Pagination, Autoplay]}
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    pagination={{ clickable: true }}
-                    autoplay={{ delay: 5000 }}
-                    className="testimonial-swiper"
-                >
-                    {data.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <div className="testimonial-card">
-                                <div className="testimonial-avatar">
-                                    <img src={item.avatar} alt={item.name} />
-                                </div>
-                                <h3 className="testimonial-name">{item.name}</h3>
-                                <p className="testimonial-text">"{item.text}"</p>
+        <div className="testimonials-wrapper">
+            <h2 className="section-title" style={{ color: '#454545' }}>Avis des clients</h2>
+            <Swiper
+                modules={[Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 5000 }}
+                className="testimonial-swiper"
+            >
+                {data.map((item) => (
+                    <SwiperSlide key={item.id}>
+                        <div className="testimonial-card">
+                            <h3 className="testimonial-name">{item.userId?.username}</h3>
+                            <div style={{ marginBottom: '15px' }}>
+                                <StarRating rating={item.rating} isReadOnly={true} size={18} />
                             </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </section>
+                            <p className="testimonial-text">"{item.content}"</p>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 };
 

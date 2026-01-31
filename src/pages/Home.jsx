@@ -5,7 +5,8 @@ import { Data } from '../Data/DataHeroSection.jsx'
 import FeatureSplit from '../components/molecules/FeatureSplit.jsx';
 import { featuredProduct } from '../Data/featuresData.jsx';
 import Testimonials from './Testimonials.jsx'
-import { testimonialsData } from '../Data/testimonialsData.jsx';
+import { useReviews } from '../features/reviews/hooks/useReviews.js';
+import ReviewForm from '../features/reviews/components/ReviewForm.jsx';
 
 const cardData = [
   { id: 1, name: "Burger Cramé", price: "10.00", image: "/images/card1.webp" },
@@ -14,6 +15,7 @@ const cardData = [
 ];
 
 function Home() {
+  const { reviews, loading, submitReview } = useReviews();
   // cette constance recupere la donnée id:1 pour l'accueil
   const heroContent = Data.find(item => item.id === 1);
 
@@ -21,7 +23,7 @@ function Home() {
     <>
       <HeroSection {...heroContent} />
       <section className='features-section'>
-        <CardsGrid data={cardData} title="Notre meilleure sélection..." isStatic={true} />
+        <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />
       </section>
 
       <FeatureSplit
@@ -30,7 +32,12 @@ function Home() {
         showLabel={true}
       />
 
-      <Testimonials data={testimonialsData} />
+      <section className="testimonials-section">
+        <div className="container">
+          <Testimonials data={reviews} loading={loading} />
+          <ReviewForm onSubmit={submitReview} />
+        </div>
+      </section>
 
     </>
   )

@@ -1,5 +1,5 @@
 .footer {
-  background-color: #121212c5;
+  background-color: var(--color-gray);
   background-image: url('../../../public/images/texture.png');
   background-repeat: repeat;
   padding: 4rem 1rem 2rem 1rem;

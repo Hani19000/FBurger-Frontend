@@ -97,6 +97,7 @@
   }
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
   .filter-bar {
     gap: 20px;

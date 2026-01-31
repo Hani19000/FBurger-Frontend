@@ -1,0 +1,27 @@
+# Dépendances et builds locaux
+node_modules
+dist
+build
+.npm
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Git
+.git
+.gitignore
+
+
+.env
+.env.local
+
+# Docker (Inutile de copier les scripts docker eux-mêmes dans l'image)
+docker
+docker-compose.yml
+
+# Divers
+README.md
+.vscode
+.DS_Store
