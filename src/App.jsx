@@ -18,6 +18,8 @@ import { Toaster } from 'react-hot-toast';
 import GuestGuard from './guards/GuestGuard.jsx';
 import RoleGuard from './guards/RoleGuard.jsx';
 import './styles/toasts.css';
+
+
 <AppLayout />
 
 const router = createBrowserRouter([
@@ -26,8 +28,8 @@ const router = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <NotFoundPage />, // Gestion globale du 404
     children: [
-      { index: true, element: <Navigate to="/home" replace /> },
-      { path: 'home', element: <Home /> },
+      { index: true, element: <Home /> },
+      { path: 'home', element: <Navigate to="/" replace /> },
       { path: 'about', element: <About /> },
       { path: 'menu', element: <Menu /> },
       { path: 'product/:id', element: <ProductDetail /> },
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
       { path: 'admins', element: <RoleGuard allowedRoles={['admin']}><AdminsPages /> </RoleGuard> },
       { path: 'admins/:profileId', element: <RoleGuard allowedRoles={['admin']}> <AdminPage /></RoleGuard> },
 
-      // Fallback (si aucune route ne match)
+      // Fallback (si aucune route ne correspond)
       { path: '*', element: <Navigate to="/home" replace /> }
     ]
   }
