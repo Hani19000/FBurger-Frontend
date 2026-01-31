@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import HeroSection from '../components/molecules/HeroSection';
-import FilterBar from '../components/molecules/FilterBar';
-import CardsGrid from "../components/atoms/CardsGrid";
-import { Data } from '../Data/DataHeroSection';
+import HeroSection from '../components/molecules/HeroSection.jsx';
+import FilterBar from '../components/molecules/FilterBar.jsx';
+import CardsGrid from "../components/atoms/CardsGrid.jsx";
+import { Data } from '../Data/DataHeroSection.jsx';
 import "../styles/menu.css";
 import { useEffect } from 'react';
-import ProductService from "../features/products/services/productService";
-import { handle } from '../utils/promise';
+import ProductService from "../features/products/services/productService.js";
+import { handle } from '../utils/promise.js';
+import SEO from '../components/atoms/SEO.jsx';
+
 
 function Menu() {
   const [products, setProducts] = useState([]);
@@ -38,6 +40,12 @@ function Menu() {
 
   return (
     <main className="menu-page">
+      {/* SEO Dynamique : On change la description si un filtre est actif  pour montrer aux moteurs de recherche que la page est pertinente.*/}
+      <SEO
+        title={activeFilter === 'Tout' ? "Notre Carte" : `Nos ${activeFilter}s`}
+        description={`Découvrez notre sélection de ${activeFilter === 'Tout' ? 'burgers, frites et boissons' : activeFilter.toLowerCase()} artisanaux. Ingrédients de qualité et recettes exclusives.`}
+        path="/menu"
+      />
       <HeroSection {...heroData} />
       <section className="menu-section">
         <FilterBar currentFilter={activeFilter} onFilterChange={setActiveFilter} />

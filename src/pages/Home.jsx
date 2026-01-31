@@ -7,12 +7,9 @@ import { featuredProduct } from '../Data/featuresData.jsx';
 import Testimonials from './Testimonials.jsx'
 import { useReviews } from '../features/reviews/hooks/useReviews.js';
 import ReviewForm from '../features/reviews/components/ReviewForm.jsx';
+import { cardData } from '../Data/CardHomeData.jsx';
+import SEO from '../components/atoms/SEO.jsx';
 
-const cardData = [
-  { id: 1, name: "Burger Cramé", price: "10.00", image: "/images/card1.webp" },
-  { id: 2, name: "Frites Bacon", price: "10.00", image: "/images/card2.webp" },
-  { id: 3, name: "Wings", price: "10.00", image: "/images/card3.webp" },
-];
 
 function Home() {
   const { reviews, loading, submitReview } = useReviews();
@@ -21,6 +18,12 @@ function Home() {
 
   return (
     <>
+      <SEO
+        title="Burgers Artisanaux & Ingrédients Frais"
+        description="Bienvenue chez FBurger. Goûtez nos burgers gourmets cuisinés avec passion, nos frites maison et découvrez une expérience culinaire unique."
+        path="/"
+      />
+
       <HeroSection {...heroContent} />
       <section className='features-section'>
         <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />

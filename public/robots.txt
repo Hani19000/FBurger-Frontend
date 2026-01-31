@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /admins/
+Disallow: /login
+Disallow: /register
+
+# Lien vers ton sitemap
+Sitemap: https://fburger.vercel.app/sitemap.xml
