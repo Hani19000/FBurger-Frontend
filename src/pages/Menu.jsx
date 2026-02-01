@@ -17,7 +17,7 @@ function Menu() {
   useEffect(() => {
     const loadData = async () => {
       // 1. helper handle pour capturer les erreurs proprement
-      const [res, error] = await handle(ProductService.getAllProducts());
+      const [data, error] = await handle(ProductService.getAllProducts());
 
       if (error) {
         console.error("Erreur lors du chargement:", error);
@@ -26,10 +26,10 @@ function Menu() {
 
       // 2. Les données sont dans res.data
       // Si l'API renvoie { data: [...] }, utilise res.data.data
-      const rawData = res.data?.data || res.data;
+
 
       // Sécurité : s'assurer que c'est un tableau
-      setProducts(Array.isArray(rawData) ? rawData : []);
+      setProducts(Array.isArray(data) ? data : []);
     };
     loadData();
   }, []);
