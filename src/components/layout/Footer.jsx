@@ -26,7 +26,7 @@ const FooterComponents = () => {
                 </div>
 
                 <div className="footer-copyright">
-                    <p>&copy; {currentYear} &nbsp;  FBurger. &nbsp; All rights reserved.</p>
+                    <p>&copy; {currentYear} &nbsp;  FBurger. &nbsp; ceci est purement un projet fictif dans le cadre de mon bts en developpement web</p>
                 </div>
             </div>
         </footer>
