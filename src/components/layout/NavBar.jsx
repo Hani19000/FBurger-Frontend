@@ -5,22 +5,22 @@ import { useAuth } from '../../features/auth/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import './navbar.css';
 import { useNavbarScroll } from "../../hooks/useScrollDirection.jsx"
-import { LinkButton } from '../atoms/Button/Button.jsx';
+import { Button } from '../atoms/Button/Button.jsx';
 
 const NavBar = () => {
     const { user, isAuthenticated, logout, loading } = useAuth();
     const isHidden = useNavbarScroll(600);
     const [menuOpen, setMenuOpen] = useState(false);
 
-
+    // Bloquer/Débloquer le scroll du corps de page
     useEffect(() => {
-        if (menuOpen) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-        return () => document.body.classList.remove('no-scroll');
-    }, [menuOpen])
+        document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
+
+        // Cleanup : s'assure que le scroll revient si on change de page subitement
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [menuOpen]);
 
     const handleLogout = () => {
         logout();
@@ -52,7 +52,7 @@ const NavBar = () => {
                     {isAuthenticated ? (
                         <>
                             <span className="user-name">{user?.username}</span>
-                            <LinkButton
+                            <Button
                                 text="Déconnexion"
                                 type="btn"
                                 onClick={handleLogout}

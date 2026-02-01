@@ -10,15 +10,7 @@ export const useLoginForm = () => {
     const location = useLocation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [credentials, setCredentials] = useState({ email: '', password: '' });
-    const getRedirectPath = () => {
-        const state = location.state;
-        if (state && state.from && state.from.pathname) {
-            return state.from.pathname;
-        }
-        return '/home';
-    };
-
-    const from = getRedirectPath();
+    const from = location.state?.from?.pathname || '/home';
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -34,7 +26,7 @@ export const useLoginForm = () => {
             toast.success("Bon retour parmi nous !", { id: loadingToast });
             navigate(from, { replace: true });
             setTimeout(() => {
-                navigate('/review', { replace: true });
+                navigate('/home', { replace: true });
             }, 100);
         } catch {
             toast.dismiss(loadingToast);

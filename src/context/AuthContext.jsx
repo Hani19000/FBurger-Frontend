@@ -1,83 +1,78 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { authService } from '../features/auth/services/authService';
-import { AuthContext } from './AuthContextInstance';
-import { handle } from '../utils/promise';
-import { registerLogout } from '../utils/authActions';
-import * as Sentry from "@sentry/react";
+import { useState, useEffect, useMemo, useCallback } from 'react'
+import { authService } from '../features/auth/services/authService'
+import { AuthContext } from './AuthContextInstance'
+import { handle } from '../utils/promise'
+import { registerLogout } from '../utils/authActions'
+import * as Sentry from "@sentry/react"
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    //Sentry est mis à jour de manière synchrone et sécurisée
     const updateAuth = useCallback((userData) => {
         setUser(userData);
-        // Sentry.setUser ne retourne pas de promesse, mais on l'isole
         if (userData) {
             Sentry.setUser({ id: userData.id, email: userData.email, username: userData.username });
         } else {
-            Sentry.setUser(null);
+            Sentry.setUser(null)
         }
-    }, []);
+    }, [])
 
+    // 1. Initialisation : Montage uniquement
     useEffect(() => {
         registerLogout(() => setUser(null));
-    }, []);
+    }, [])
 
-    // Vérification de session au démarrage (Cookie check)
+    // 2. Récupération de la session au démarrage
     useEffect(() => {
-        registerLogout(() => setUser(null));
-
         const initAuth = async () => {
             try {
-                const res = await authService.me();
-
-                let userData = null;
-                if (res?.data) {
-                    userData = res.data.data ? res.data.data : res.data;
-                }
-                // fonction de callback pour garantir l'ordre
-                updateAuth(userData);
+                const data = await authService.me();
+                // Si data contient une propriété user, on la prend, sinon on prend data lui-même
+                const userToSet = data?.user || data;
+                updateAuth(userToSet);
             } catch {
                 updateAuth(null);
             } finally {
                 setLoading(false);
             }
-        };
+        }
+        initAuth()
+    }, [updateAuth])
 
-        initAuth();
-    }, [updateAuth]);
-
-
+    // 3. Actions d'authentification (Ré-ajoutées ici)
     const login = useCallback(async (email, password) => {
-        const [res, error] = await handle(authService.login(email, password));
+        const [data, error] = await handle(authService.login(email, password));
         if (error) throw error;
 
-        const data = res.data?.data || res.data;
-        updateAuth(data.user);
-        return data;
-    }, [updateAuth]);
-
+        // Grâce à l'intercepteur, data est déjà propre
+        updateAuth(data.user || data);
+        return data
+    }, [updateAuth])
 
     const logout = useCallback(async () => {
-        //  attendre la fin du service avant de reset l'UI
         await handle(authService.logout());
-        updateAuth(null);
-    }, [updateAuth]);
+        updateAuth(null)
+    }, [updateAuth])
 
+    // 4. Mémorisation de la valeur du contexte
+    const value = useMemo(() => {
+        const hasUserData = user && (user.id || user.username || user.email);
 
-    const value = useMemo(() => ({
-        user,
-        loading,
-        isAuthenticated: !!user,
-        login,
-        logout,
-        setAuthData: updateAuth
-    }), [user, loading, login, logout, updateAuth]);
+        return {
+            user: hasUserData ? user : null,
+            loading,
+            isAuthenticated: !!hasUserData,
+            login,
+            logout,
+            setAuthData: updateAuth
+        }
+
+    }, [user, loading, login, logout, updateAuth]);
 
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
-    );
+    )
 }

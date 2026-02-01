@@ -35,7 +35,7 @@ export const useRegisterForm = () => {
             password: formData.password
         };
 
-        const [response, error] = await handle(authService.register(payload));
+        const [data, error] = await handle(authService.register(payload));
 
         // 3. Gestion d'erreur
         if (error) {
@@ -45,24 +45,25 @@ export const useRegisterForm = () => {
         }
 
         // 4. Extraction & Auto-connexion
-        const getResponseData = (res) => {
-            if (!res?.data) return null;
-            return res.data.data ? res.data.data : res.data;
-        };
+        const user = data?.user || data;
+        const username = user?.username || "nouvel utilisateur";
 
-        const responseData = getResponseData(response);
+        if (user && (user.id || user.username)) {
+            // On met à jour le contexte avec l'objet user propre
+            setAuthData(user);
 
-        if (responseData && responseData.user) {
-            const { user, accessToken } = responseData;
+            toast.success(`Bienvenue, ${username} !`, { id: loadId });
 
-            setAuthData(user, accessToken);
-            toast.success(`Bienvenue, ${user.username} !`, { id: loadId });
-            navigate('/review', { replace: true });
+            // Petit délai de courtoisie pour le state
+            setTimeout(() => {
+                navigate('/review', { replace: true });
+            }, 100);
         } else {
-            // Cas rare où l'inscription marche mais le token n'est pas renvoyé
             toast.success("Compte créé ! Veuillez vous connecter.", { id: loadId });
             navigate('/login', { replace: true });
         }
+
+        setIsSubmitting(false);
     };
 
     return {
