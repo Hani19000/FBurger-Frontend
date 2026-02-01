@@ -2,6 +2,7 @@ import { useState } from 'react'
 import StarRating from '../../../components/atoms/Star/StarRating.jsx'
 import { useAuth } from '../../../context/AuthContextInstance.js'
 import { LinkButton } from '../../../components/atoms/Button/Button.jsx'
+import { Button } from '../../../components/atoms/Button/Button.jsx'
 import '../../../styles/review.css'
 import toast from 'react-hot-toast'
 
