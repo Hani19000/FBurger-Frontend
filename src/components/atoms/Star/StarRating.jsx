@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 
 const StarRating = ({ rating, setRating, isReadOnly = false, size = 20 }) => {
-    const [hover] = useState(0);
-    const getStarColor = (isFilled) => isFilled ? "var(--color-black)" : "transparent";
-    const getStrokeColor = (isFilled) => isFilled ? "var(--color-black)" : "var(--color-gray)";
+    const [hover, setHover] = useState(0);
+
     return (
         <div className="flex gap-1" style={{ display: 'flex', gap: '4px' }}>
             {[...Array(5)].map((_, index) => {
@@ -16,15 +15,24 @@ const StarRating = ({ rating, setRating, isReadOnly = false, size = 20 }) => {
                     <button
                         type="button"
                         key={index}
-                        className="star-button"
-                        style={{ cursor: isReadOnly ? 'default' : 'pointer' }} // Garder le minimum en inline
+                        // On désactive le curseur main si c'est en lecture seule
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: isReadOnly ? 'default' : 'pointer',
+                            padding: 0
+                        }}
                         onClick={() => !isReadOnly && setRating(starValue)}
+                        onMouseEnter={() => !isReadOnly && setHover(starValue)}
+                        onMouseLeave={() => !isReadOnly && setHover(0)}
                         disabled={isReadOnly}
+                        aria-label={`${starValue} étoiles`}
                     >
                         <Star
                             size={size}
-                            fill={getStarColor(isFilled)}
-                            color={getStrokeColor(isFilled)}
+                            fill={isFilled ? "var(--color-black)" : "transparent"}
+                            color={isFilled ? "var(--color-black)" : "var(--color-gray)"}
+                            strokeWidth={1.5}
                         />
                     </button>
                 );
