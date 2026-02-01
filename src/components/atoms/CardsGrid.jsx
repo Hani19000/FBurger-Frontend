@@ -1,27 +1,36 @@
 import FeatureCard from "../atoms/FeatureCard";
 
-const defaultImage = "/images/menu_home.webp";
-
 function CardsGrid({ data = [], title, variant, isStatic }) {
-    const productsList = Array.isArray(data) ? data : (data?.rows || []);
+
+    let productsList = [];
+    if (Array.isArray(data)) {
+        productsList = data;
+    } else if (data?.rows) {
+        productsList = data.rows;
+    }
+
+    // Construction de classe propre (Pattern "classNames")
+    const getGridClasses = () => {
+        const classes = ['features-grid'];
+        if (isStatic) classes.push('home-grid');
+        if (variant === 'menu') classes.push('menu-grid');
+        return classes.join(' ');
+    };
 
     return (
-        <div className='container'>
+        <section className='container'>
             {title && <h2 className='section-title'>{title}</h2>}
-            <div className={`features-grid ${isStatic ? 'home-grid' : ''} ${variant === 'menu' ? 'menu-grid' : ''}`}>
-                {productsList.map((item) => (
+            <div className={getGridClasses()}>
+                {productsList.map((item, index) => (
                     <FeatureCard
-                        key={item.id || item._id}
-                        id={item.id || item._id}
-                        price={item.prix || item.price}
-                        name={item.name}
-                        img={item.image_url || item.image || item.img || defaultImage}
+                        key={item.id || item._id || `product-${index}`}
+                        product={item}
                         variant={variant}
                         isStatic={isStatic}
                     />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
 

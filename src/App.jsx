@@ -17,10 +17,10 @@ import ProtectedRoute from './guards/ProtecteRoute.jsx';
 import { Toaster } from 'react-hot-toast';
 import GuestGuard from './guards/GuestGuard.jsx';
 import RoleGuard from './guards/RoleGuard.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 import './styles/toasts.css';
 
 
-<AppLayout />
 
 const router = createBrowserRouter([
   {
@@ -51,32 +51,35 @@ const router = createBrowserRouter([
   }
 ]);
 
+const helmetContext = {};
 function App() {
   return (
-    <AuthProvider>
-      <Toaster
-        position="top-center"
-        gutter={8}
-        toastOptions={{
-          className: 'custom-toast',
-          duration: 3000,
+    <HelmetProvider context={helmetContext}>
+      <AuthProvider>
+        <Toaster
+          position="top-center"
+          gutter={8}
+          toastOptions={{
+            className: 'custom-toast',
+            duration: 3000,
 
-          success: {
-            className: 'custom-toast toast-success',
-            icon: null,
-          },
-          error: {
-            className: 'custom-toast toast-error',
-            icon: null,
-          },
-          loading: {
-            className: 'custom-toast toast-loading',
-            icon: null,
-          },
-        }}
-      />
-      <RouterProvider router={router} />
-    </AuthProvider>
+            success: {
+              className: 'custom-toast toast-success',
+              icon: null,
+            },
+            error: {
+              className: 'custom-toast toast-error',
+              icon: null,
+            },
+            loading: {
+              className: 'custom-toast toast-loading',
+              icon: null,
+            },
+          }}
+        />
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
 

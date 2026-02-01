@@ -1,25 +1,21 @@
 import { NavLink } from 'react-router-dom';
 import './Button.css';
 
-function Button({ type = 'btn', text, to, onClick, htmlType = 'button', disabled }) {
-  // Si 'to' existe, c'est un lien de navigation
+function Button({ type = 'btn', text, to, className = '', children, ...props }) {
+  const combinedClasses = `${type} ${className}`.trim();
+
+  // Si "to" existe, on rend un NavLink, sinon un button
   if (to) {
     return (
-      <NavLink to={to} className={type} onClick={onClick}>
-        {text}
+      <NavLink to={to} className={combinedClasses} {...props}>
+        {text || children}
       </NavLink>
     );
   }
 
-  // Sinon, c'est un vrai bouton (pour les formulaires ou actions)
   return (
-    <button
-      type={htmlType}
-      className={type}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {text}
+    <button className={combinedClasses} {...props}>
+      {text || children}
     </button>
   );
 }

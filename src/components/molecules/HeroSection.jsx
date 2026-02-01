@@ -1,7 +1,8 @@
 import "../../styles/hero.css"
+import { useMemo } from "react";
 
 function HeroSection({ title, subtitle, img, children, isLight = false }) {
-    const sectionStyle = {
+    const sectionStyle = useMemo(() => ({
         position: 'relative',
         backgroundImage: img ? `url('${img}')` : 'none',
         backgroundColor: '#e9e6c3',
@@ -13,7 +14,7 @@ function HeroSection({ title, subtitle, img, children, isLight = false }) {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden'
-    };
+    }), [img]);
 
     return (
         <section className="hero-section" style={sectionStyle}>

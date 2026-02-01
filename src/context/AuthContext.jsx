@@ -9,13 +9,15 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    //Sentry est mis à jour de manière synchrone et sécurisée
     const updateAuth = useCallback((userData) => {
         setUser(userData);
-        Sentry.setUser(userData ? {
-            id: userData.id,
-            email: userData.email,
-            username: userData.username
-        } : null);
+        // Sentry.setUser ne retourne pas de promesse, mais on l'isole
+        if (userData) {
+            Sentry.setUser({ id: userData.id, email: userData.email, username: userData.username });
+        } else {
+            Sentry.setUser(null);
+        }
     }, []);
 
     useEffect(() => {
@@ -24,24 +26,29 @@ export const AuthProvider = ({ children }) => {
 
     // Vérification de session au démarrage (Cookie check)
     useEffect(() => {
-        const checkAuth = async () => {
+        registerLogout(() => setUser(null));
+
+        const initAuth = async () => {
             try {
                 const res = await authService.me();
                 const userData = res.data?.data || res.data;
+                // fonction de callback pour garantir l'ordre
                 updateAuth(userData);
             } catch {
-                setUser(null);
+                updateAuth(null);
             } finally {
                 setLoading(false);
             }
         };
-        checkAuth();
+
+        initAuth();
     }, [updateAuth]);
 
 
     const login = useCallback(async (email, password) => {
         const [res, error] = await handle(authService.login(email, password));
         if (error) throw error;
+
         const data = res.data?.data || res.data;
         updateAuth(data.user);
         return data;
@@ -49,8 +56,9 @@ export const AuthProvider = ({ children }) => {
 
 
     const logout = useCallback(async () => {
+        //  attendre la fin du service avant de reset l'UI
         await handle(authService.logout());
-        updateAuth(null, false);
+        updateAuth(null);
     }, [updateAuth]);
 
 

@@ -77,7 +77,6 @@
 .card-link {
   text-decoration: none;
   color: inherit;
-  display: block; /* Pour que toute la zone de la carte soit cliquable */
 }
 
 .menu-card-style::after {

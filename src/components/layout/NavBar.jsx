@@ -12,14 +12,14 @@ const NavBar = () => {
     const isHidden = useNavbarScroll(600);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    // Bloquer/Débloquer le scroll du corps de page
-    useEffect(() => {
-        document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
 
-        // Cleanup : s'assure que le scroll revient si on change de page subitement
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        return () => document.body.classList.remove('no-scroll');
     }, [menuOpen]);
 
     const handleLogout = () => {

@@ -4,7 +4,7 @@ const FilterBar = ({ currentFilter, onFilterChange }) => (
     <div className="filter-bar">
         {CATEGORIES.map((category) => (
             <button
-                key={category}
+                key={category} // la catégorie est unique et stable
                 className={currentFilter === category ? 'active' : ''}
                 onClick={() => onFilterChange(category)}
             >

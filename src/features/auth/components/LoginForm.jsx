@@ -13,16 +13,18 @@ const LoginForm = () => {
     return (
         <div className="login-card-dark">
             <form onSubmit={handleSubmit} className="form-content">
-                {LOGIN_FIELDS.map(({ id, ...fieldProps }) => (
-                    <div className="input-group" key={id}>
-                        <label htmlFor={id}>{fieldProps.label}</label>
+                {LOGIN_FIELDS.map((field) => (
+                    <div className="input-group" key={field.id}>
+                        <label htmlFor={field.id}>{field.label}</label>
                         <input
-                            {...fieldProps}
-                            id={id}
-                            name={id}
-                            value={credentials[id]}
+                            id={field.id}
+                            name={field.id}
+                            type={field.type}
+                            placeholder={field.placeholder}
+                            value={credentials[field.id] || ''}
                             onChange={handleChange}
                             className="input-beige"
+                            autoComplete={field.type === 'password' ? 'current-password' : 'email'}
                             required
                         />
                     </div>
@@ -35,7 +37,7 @@ const LoginForm = () => {
                         type="btn"
                         htmlType="submit"
                         text={isLoading ? "Connexion..." : "Se connecter"}
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || isLoading}
                     />
                 </div>
 

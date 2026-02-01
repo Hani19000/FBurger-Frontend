@@ -11,9 +11,11 @@ const AboutSplit = ({ data }) => {
                 <div className="about-split-content">
                     <h2 className="about-title">{data.title}</h2>
                     <div className="about-description">
-                        {data.description.split('\n\n').map((paragraph, index) => (
-                            <p key={index}>{paragraph}</p>
-                        ))}
+                        {data.description.split('\n\n').map((paragraph, index) => {
+                            // Créer une clé stable basée sur le début du texte
+                            const paragraphKey = paragraph.substring(0, 20).replace(/\s/g, '-');
+                            return <p key={`${paragraphKey}-${index}`}>{paragraph}</p>;
+                        })}
                     </div>
                 </div>
             </div>
