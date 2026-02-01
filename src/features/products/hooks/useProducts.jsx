@@ -11,26 +11,17 @@ const useProducts = (id = null) => {
         const fetchData = async () => {
             setLoading(true);
             setError(null);
-
-            // Sélection de la méthode de service
             const call = id
                 ? ProductService.getProductById(id)
                 : ProductService.getAllProducts();
-
             const [res, err] = await handle(call);
-
             if (err) {
                 setError(err);
             } else {
-                // Axios stocke la réponse dans .data
-                // gère le cas où l'API renvoie { data: [...] } ou directement l'array
-                const result = res.data?.data || res.data;
-                setData(result);
+                setData(res || (id ? null : []));
             }
-
             setLoading(false);
         };
-
         fetchData();
     }, [id]);
 
