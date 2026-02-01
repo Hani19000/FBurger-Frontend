@@ -1,8 +1,6 @@
 /* --- SECTION DU FORMULAIRE --- */
 .review-form-section {
-  background-image:
-    url(/images/texture2.webp),
-    linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+  background-image: url(/images/texture2.webp);
   background-blend-mode: overlay;
   background-size: cover;
   background-position: center;

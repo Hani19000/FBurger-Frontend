@@ -1,5 +1,4 @@
-/* Import des variables pour être sûr qu'elles sont là */
-
+/* Base commune à tous les boutons */
 .btn {
   display: flex;
   justify-content: center;
@@ -8,26 +7,31 @@
   color: var(--color-black);
   border: none;
   padding: 0.7rem 2rem;
-  --font-family-title-medium: var(--font-nippo);
-  --weight-title-medium: 500;
   min-width: 10rem;
   text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-nippo);
+  font-weight: 500;
+  transition: all 0.2s ease; /* Transition pour le hover */
 }
 
-.btnVariant {
-  background-color: var(--color-black);
-  color: var(--color-primary);
-  border: none;
-  padding: 0.7rem 2rem;
-  min-width: 10rem;
-  text-decoration: none;
-  cursor: pointer; /* Ajout crucial pour les balises button */
-  font-family: inherit; /* Pour hériter des fonts Nippo/Switzer définies plus haut */
+.btn-black {
+  background-color: var(--color-black) !important;
+  color: var(--color-primary) !important;
+  border: none !important;
+  text-decoration: none !important;
+  cursor: pointer !important; /* Ajout crucial pour les balises button */
+  font-family: inherit !important;
 }
 
-/* effet au survol pour plus de feedback */
-.btn:hover,
-.btnVariant:hover {
+/* Gestion du state 'disabled' pour que le bouton noir ne le reste pas s'il est bloqué */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn:hover {
   opacity: 0.9;
   transform: translateY(-1px);
 }

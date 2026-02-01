@@ -1,14 +1,14 @@
 import api from '../../../services/api.js';
 
+// services/reviewService.js
 export const reviewService = {
     getAll: async () => {
+        // 'res' contient déjà directement le tableau ou l'objet grâce à l'intercepteur
         const res = await api.get('/reviews');
-        return res.data?.data || [];
+        return res || [];
     },
 
-    // Poster un avis
     create: async (reviewData) => {
-        const { data } = await api.post('/reviews', reviewData);
-        return data?.data || data;
+        return await api.post('/reviews', reviewData);
     }
 }

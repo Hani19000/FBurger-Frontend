@@ -2,6 +2,7 @@ import { useState } from 'react'
 import StarRating from '../../../components/atoms/Star/StarRating.jsx'
 import { useAuth } from '../../../context/AuthContextInstance.js'
 import { Button } from '../../../components/atoms/Button/Button.jsx'
+import { LinkButton } from '../../../components/atoms/Button/Button.jsx'
 import '../../../styles/review.css'
 import toast from 'react-hot-toast'
 
@@ -10,8 +11,8 @@ const ReviewForm = ({ onSubmit }) => {
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async (event) => {
+        event.preventDefault()
 
         if (rating === 0) {
             toast.error("N'oubliez pas de laisser une note !");
@@ -35,7 +36,7 @@ const ReviewForm = ({ onSubmit }) => {
             <p style={{ marginBottom: '1.5rem', fontFamily: 'var(--font-nippo)' }}>
                 Connectez-vous pour laisser un avis.
             </p>
-            <Button type="btnVariant" text="SE CONNECTER" to="/login" />
+            <LinkButton variant="black" text="SE CONNECTER" to="/login" />
         </div>
     )
 
@@ -61,7 +62,7 @@ const ReviewForm = ({ onSubmit }) => {
                     <Button
                         text="PUBLIER MON AVIS"
                         htmlType="submit"
-                        type="btnVariant"
+                        variant="black"
                         disabled={rating === 0 || !comment.trim()}
                     />
                 </form>
