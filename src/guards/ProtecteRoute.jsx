@@ -17,6 +17,6 @@ const ProtectedRoute = ({ children }) => {
 
     // 3. Si connecté, on affiche la page demandée
     return children;
-};
+}
 
 export default ProtectedRoute;

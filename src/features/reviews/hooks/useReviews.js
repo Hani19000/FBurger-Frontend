@@ -45,8 +45,8 @@ export const useReviews = () => {
 
         load();
 
-        return () => { active = false; };
-    }, [fetchReviews]);
+        return () => { active = false; }
+    }, [fetchReviews])
 
     return { reviews, loading, submitReview, refresh: fetchReviews };
-};
+}

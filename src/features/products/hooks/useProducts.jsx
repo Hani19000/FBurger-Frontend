@@ -35,6 +35,6 @@ const useProducts = (id = null) => {
     }, [id]);
 
     return { data, loading, error };
-};
+}
 
 export default useProducts;

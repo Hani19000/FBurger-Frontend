@@ -11,24 +11,25 @@ function CardsGrid({ data = [], title, variant, isStatic }) {
 
     // Construction de classe propre (Pattern "classNames")
     const getGridClasses = () => {
-        const classes = ['features-grid'];
-        if (isStatic) classes.push('home-grid');
-        if (variant === 'menu') classes.push('menu-grid');
-        return classes.join(' ');
-    };
+        const Classes = ['features-grid'];
+        if (isStatic) Classes.push('home-grid');
+        if (variant === 'menu') Classes.push('menu-grid');
+        return Classes.join(' ');
+    }
 
     return (
         <section className='container'>
             {title && <h2 className='section-title'>{title}</h2>}
             <div className={getGridClasses()}>
-                {productsList.map((item, index) => (
+                {productsList.map((item, index) => {
+                    const itemKey = item.id || item._id || `product-${index}`;
                     <FeatureCard
-                        key={item.id || item._id || `product-${index}`}
+                        key={itemKey}
                         product={item}
                         variant={variant}
                         isStatic={isStatic}
                     />
-                ))}
+                })}
             </div>
         </section>
     );

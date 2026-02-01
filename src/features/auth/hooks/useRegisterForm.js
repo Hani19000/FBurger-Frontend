@@ -41,15 +41,20 @@ export const useRegisterForm = () => {
         if (error) {
             setIsSubmitting(false);
             toast.dismiss(loadId);
+            return;
         }
 
         // 4. Extraction & Auto-connexion
-        const responseData = response?.data?.data || response?.data;
-        const { user, accessToken } = responseData || {};
+        const getResponseData = (res) => {
+            if (!res?.data) return null;
+            return res.data.data ? res.data.data : res.data;
+        };
 
-        console.log("Debug Register:", { user, accessToken });
+        const responseData = getResponseData(response);
 
-        if (responseData) {
+        if (responseData && responseData.user) {
+            const { user, accessToken } = responseData;
+
             setAuthData(user, accessToken);
             toast.success(`Bienvenue, ${user.username} !`, { id: loadId });
             navigate('/review', { replace: true });

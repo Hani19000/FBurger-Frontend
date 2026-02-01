@@ -10,7 +10,15 @@ export const useLoginForm = () => {
     const location = useLocation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [credentials, setCredentials] = useState({ email: '', password: '' });
-    const from = location.state?.from?.pathname || '/home';
+    const getRedirectPath = () => {
+        const state = location.state;
+        if (state && state.from && state.from.pathname) {
+            return state.from.pathname;
+        }
+        return '/home';
+    };
+
+    const from = getRedirectPath();
 
     const handleChange = (event) => {
         const { name, value } = event.target;

@@ -31,7 +31,11 @@ export const AuthProvider = ({ children }) => {
         const initAuth = async () => {
             try {
                 const res = await authService.me();
-                const userData = res.data?.data || res.data;
+
+                let userData = null;
+                if (res?.data) {
+                    userData = res.data.data ? res.data.data : res.data;
+                }
                 // fonction de callback pour garantir l'ordre
                 updateAuth(userData);
             } catch {
@@ -76,4 +80,4 @@ export const AuthProvider = ({ children }) => {
             {!loading && children}
         </AuthContext.Provider>
     );
-};
+}

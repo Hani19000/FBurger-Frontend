@@ -20,7 +20,7 @@ const NavBar = () => {
             document.body.classList.remove('no-scroll');
         }
         return () => document.body.classList.remove('no-scroll');
-    }, [menuOpen]);
+    }, [menuOpen])
 
     const handleLogout = () => {
         logout();

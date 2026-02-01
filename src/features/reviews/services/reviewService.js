@@ -11,4 +11,4 @@ export const reviewService = {
         const { data } = await api.post('/reviews', reviewData);
         return data?.data || data;
     }
-};
+}

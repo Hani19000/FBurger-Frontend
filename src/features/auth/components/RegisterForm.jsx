@@ -23,7 +23,7 @@ const RegisterForm = () => {
                             {...fieldProps}
                             id={id}
                             name={id}
-                            value={formData[id]}
+                            value={formData[id] || ''}
                             onChange={handleChange}
                             className="input-beige"
                             required
