@@ -1,23 +1,28 @@
 import { NavLink } from 'react-router-dom';
 import './Button.css';
 
-function Button({ type = 'btn', text, to, className = '', children, ...props }) {
-  const combinedClasses = `${type} ${className}`.trim();
-
-  // Si "to" existe, on rend un NavLink, sinon un button
-  if (to) {
-    return (
-      <NavLink to={to} className={combinedClasses} {...props}>
-        {text || children}
-      </NavLink>
-    );
-  }
-
+export function Button({ htmlType = 'button', className = '', children, ...props }) {
   return (
-    <button className={combinedClasses} {...props}>
-      {text || children}
+    <button
+      type={htmlType}
+      className={`btn ${className}`}
+      {...props}
+    >
+      {children}
     </button>
   );
 }
 
-export default Button;
+export function LinkButton({ to, className = '', children, ...props }) {
+  return (
+    <NavLink
+      to={to}
+      className={`btn ${className}`}
+      {...props}
+    >
+      {children}
+    </NavLink>
+  );
+}
+
+

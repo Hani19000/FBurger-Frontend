@@ -5,7 +5,7 @@ import { useAuth } from '../../features/auth/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import './navbar.css';
 import { useNavbarScroll } from "../../hooks/useScrollDirection.jsx"
-import Button from '../atoms/Button/Button.jsx';
+import { LinkButton } from '../atoms/Button/Button.jsx';
 
 const NavBar = () => {
     const { user, isAuthenticated, logout, loading } = useAuth();
@@ -52,7 +52,7 @@ const NavBar = () => {
                     {isAuthenticated ? (
                         <>
                             <span className="user-name">{user?.username}</span>
-                            <Button
+                            <LinkButton
                                 text="Déconnexion"
                                 type="btn"
                                 onClick={handleLogout}

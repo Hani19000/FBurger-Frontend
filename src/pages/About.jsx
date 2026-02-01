@@ -6,7 +6,7 @@ import { aboutData } from '../Data/AboutData.jsx';
 import SEO from '../components/atoms/SEO.jsx';
 
 function About() {
-    const heroContent = Data.find(item => item.id === 4);
+    const HeroContent = Data.find(item => item.id === 4);
 
     return (
         <>
@@ -16,7 +16,7 @@ function About() {
                 path="/about"
             />
 
-            <HeroSection {...heroContent} />
+            <HeroSection {...HeroContent} />
             <AboutSplit data={aboutData} />
 
         </>

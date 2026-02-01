@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../../../components/atoms/Button/Button';
+import { LinkButton } from '../../../components/atoms/Button/Button';
 import { useLoginForm } from '../hooks/useLoginForm';
 
 const LOGIN_FIELDS = [
@@ -33,7 +33,7 @@ const LoginForm = () => {
                 {errorMessage && <p className="error-message text-center">{errorMessage}</p>}
 
                 <div className="btn-container-center">
-                    <Button
+                    <LinkButton
                         type="btn"
                         htmlType="submit"
                         text={isLoading ? "Connexion..." : "Se connecter"}

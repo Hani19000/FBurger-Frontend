@@ -1,5 +1,5 @@
 import "../../styles/home.css"
-import Button from "../../components/atoms/Button/Button.jsx";
+import { LinkButton } from "../../components/atoms/Button/Button.jsx";
 
 const FeatureSplit = ({ data }) => {
     return (
@@ -13,7 +13,7 @@ const FeatureSplit = ({ data }) => {
                 <div className="feature-split-content">
                     <h2 className="section-title">{data.title}</h2>
                     <p className="feature-description">{data.description}</p>
-                    <Button
+                    <LinkButton
                         type="btn"
                         text={data.buttonText}
                         to="/menu"

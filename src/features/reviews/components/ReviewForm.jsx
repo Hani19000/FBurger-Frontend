@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import StarRating from '../../../components/atoms/Star/StarRating.jsx';
-import { useAuth } from '../../../context/AuthContextInstance.js';
-import Button from '../../../components/atoms/Button/Button.jsx';
-import '../../../styles/review.css';
-import toast from 'react-hot-toast';
+import { useState } from 'react'
+import StarRating from '../../../components/atoms/Star/StarRating.jsx'
+import { useAuth } from '../../../context/AuthContextInstance.js'
+import { LinkButton } from '../../../components/atoms/Button/Button.jsx'
+import '../../../styles/review.css'
+import toast from 'react-hot-toast'
 
 const ReviewForm = ({ onSubmit }) => {
-    const { user } = useAuth();
-    const [rating, setRating] = useState(0);
-    const [comment, setComment] = useState('');
+    const { user } = useAuth()
+    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('')
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (rating === 0) {
             toast.error("N'oubliez pas de laisser une note !");
-            return;
+            return
         }
 
         // 2. Validation de la longueur (pour correspondre au backend)
         if (comment.trim().length < 10) {
             toast.error("Votre avis doit faire au moins 10 caractères.");
-            return;
+            return
         }
 
         await onSubmit({ rating, content: comment.trim() });
 
-        setRating(0);
-        setComment('');
-    };
+        setRating(0)
+        setComment('')
+    }
 
     if (!user) return (
         <div className='auth-notice'> {/* On garde le wrapper pour le fond texture */}
@@ -37,7 +37,7 @@ const ReviewForm = ({ onSubmit }) => {
             </p>
             <Button type="btnVariant" text="SE CONNECTER" to="/login" />
         </div>
-    );
+    )
 
     return (
         <div className="review-form-section">
@@ -58,7 +58,7 @@ const ReviewForm = ({ onSubmit }) => {
                         required
                     />
 
-                    <Button
+                    <LinkButton
                         text="PUBLIER MON AVIS"
                         htmlType="submit"
                         type="btnVariant"
@@ -67,7 +67,7 @@ const ReviewForm = ({ onSubmit }) => {
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default ReviewForm;

@@ -14,7 +14,7 @@ import SEO from '../components/atoms/SEO.jsx';
 function Home() {
   const { reviews, loading, submitReview } = useReviews();
   // cette constance recupere la donnée id:1 pour l'accueil
-  const heroContent = Data.find(item => item.id === 1);
+  const HeroContent = Data.find(item => item.id === 1);
 
   return (
     <>
@@ -24,7 +24,7 @@ function Home() {
         path="/"
       />
 
-      <HeroSection {...heroContent} />
+      <HeroSection {...HeroContent} />
       <section className='features-section'>
         <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />
       </section>

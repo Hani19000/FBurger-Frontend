@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../../../components/atoms/Button/Button';
+import { LinkButton } from '../../../components/atoms/Button/Button';
 import { useRegisterForm } from '../hooks/useRegisterForm';
 
 // Configuration extraite : évite de recréer l'objet à chaque render
@@ -34,7 +34,7 @@ const RegisterForm = () => {
                 {errorMessage && <p className="error-message text-center">{errorMessage}</p>}
 
                 <div className="btn-container-center">
-                    <Button
+                    <LinkButton
                         type="btn"
                         htmlType="submit"
                         text={isLoading ? "Création..." : "S'inscrire"}

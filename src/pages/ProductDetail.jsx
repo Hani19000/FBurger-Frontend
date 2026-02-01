@@ -1,22 +1,22 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import HeroSection from '../components/molecules/HeroSection';
-import useProducts from "../features/products/hooks/useProducts.jsx";
-import '../styles/productdetail.css';
-import SEO from '../components/atoms/SEO.jsx';
+import { useParams, useNavigate } from 'react-router-dom'
+import HeroSection from '../components/molecules/HeroSection'
+import useProducts from "../features/products/hooks/useProducts.jsx"
+import '../styles/productdetail.css'
+import SEO from '../components/atoms/SEO.jsx'
 
 
 function ProductDetail() {
-    const { id } = useParams();
-    const { data: product, loading } = useProducts(id);
-    const navigate = useNavigate();
+    const { id } = useParams()
+    const { data: product, loading } = useProducts(id)
+    const navigate = useNavigate()
 
-    const optimizedHeroImg = product?.image_url?.replace(/\.[^/.]+$/, ".webp");
+    const optimizedHeroImg = product?.image_url?.replace(/\.[^/.]+$/, ".webp")
 
     // Valeurs par défaut pendant le chargement pour éviter le vide SEO
-    const seoTitle = loading ? "Découvrez nos spécialités" : product?.name;
+    const seoTitle = loading ? "Découvrez nos spécialités" : product?.name
     const seoDescription = loading
         ? "Découvrez les détails de nos burgers artisanaux chez FBurger."
-        : `Dégustez notre ${product?.name} : ${product?.description}. Prix : ${product?.price}€. Ingrédients frais et préparation minute.`;
+        : `Dégustez notre ${product?.name} : ${product?.description}. Prix : ${product?.price}€. Ingrédients frais et préparation minute.`
 
 
     return (
@@ -53,7 +53,7 @@ function ProductDetail() {
                 </div>
             </HeroSection>
         </main>
-    );
+    )
 }
 
 export default ProductDetail;

@@ -4,8 +4,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import Home from './pages/Home.jsx';
 import Menu from './pages/Menu.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
-import AdminPage from './pages/AdminPage.jsx';
-import AdminsPages from './pages/AdminsPage.jsx';
+import { AdminDashboard } from './pages/AdminDashboard.jsx'
 import Review from './pages/Review.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
@@ -42,8 +41,7 @@ const router = createBrowserRouter([
       { path: 'review', element: (<ProtectedRoute><Review /></ProtectedRoute>) },
 
       // Routes Admin : Uniquement roleName 'admin'
-      { path: 'admins', element: <RoleGuard allowedRoles={['admin']}><AdminsPages /> </RoleGuard> },
-      { path: 'admins/:profileId', element: <RoleGuard allowedRoles={['admin']}> <AdminPage /></RoleGuard> },
+      { path: 'admins', element: <RoleGuard allowedRoles={['admin']}><AdminDashboard /> </RoleGuard> },
 
       // Fallback (si aucune route ne correspond)
       { path: '*', element: <Navigate to="/home" replace /> }
