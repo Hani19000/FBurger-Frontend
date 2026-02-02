@@ -19,7 +19,7 @@ export const useReviews = () => {
     const submitReview = async (reviewData) => {
         const [, err] = await handle(
             toast.promise(
-                reviewService.create(reviewData),
+                reviewService.create(reviewData, { skipGlobalToast: true }),
                 {
                     loading: 'Envoi de votre avis...',
                     success: 'Merci ! Votre avis a été envoyé.',

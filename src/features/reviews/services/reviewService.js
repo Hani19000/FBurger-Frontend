@@ -7,7 +7,7 @@ export const reviewService = {
         return res || [];
     },
 
-    create: async (reviewData) => {
-        return await api.post('/reviews', reviewData);
+    create: async (reviewData, config = {}) => {
+        return await api.post('/reviews', reviewData, config);
     }
 }

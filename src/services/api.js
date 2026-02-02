@@ -18,6 +18,11 @@ const handleResponseError = (error) => {
     // --- 2. EXTRACTION DU MESSAGE SERVEUR ---
     const serverMessage = data?.message || data?.error;
 
+    // SI LA REQUÊTE DEMANDE LE SILENCE, ON NE FAIT RIEN (sauf rejeter)
+    if (config?.skipGlobalToast) {
+        return Promise.reject(error);
+    }
+
     // --- 3. GESTION DES ERREURS GLOBALES ---
     switch (status) {
         case 400: // Ajout du cas 400 (Bad Request / Validation)
