@@ -44,12 +44,16 @@ function Menu() {
       />
       <HeroSection {...heroData} />
 
-      <AnimatedSection delay={0.3}>
-        <section className="menu-section">
+
+      <section className="menu-section">
+        <AnimatedSection delay={0.3}>
           <FilterBar currentFilter={activeFilter} onFilterChange={setActiveFilter} />
+        </AnimatedSection>
+        <AnimatedSection delay={0.6}>
           <CardsGrid data={displayProducts} variant="menu" />
-        </section>
-      </AnimatedSection>
+        </AnimatedSection>
+      </section>
+
     </main>
   );
 }

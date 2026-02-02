@@ -15,7 +15,7 @@ const FeatureSplit = ({ data }) => {
                     initial={{ opacity: 0, x: -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.3 }} // Se déclenche quand 30% est visible
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 >
                     <img src={data.img} alt={data.name} />
                     <span className="image-label">{data.name}</span>
@@ -27,7 +27,7 @@ const FeatureSplit = ({ data }) => {
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     <h2 className="section-title">{data.title}</h2>
                     <p className="feature-description">{data.description}</p>

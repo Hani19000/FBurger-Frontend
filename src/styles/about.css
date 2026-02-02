@@ -1,11 +1,12 @@
 .about-split-section {
+  min-height: 80vh;
   padding: 15rem 0;
   display: flex;
   justify-content: center;
   width: 100%;
   background-image: url(/images/texture2.webp);
   background-repeat: repeat;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 
 .about-split-container {
@@ -32,7 +33,7 @@
   object-fit: cover;
   border-radius: 40px;
   border-bottom-right-radius: 190px;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
 .about-split-content {
