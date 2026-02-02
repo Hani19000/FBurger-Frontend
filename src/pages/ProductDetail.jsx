@@ -10,7 +10,8 @@ function ProductDetail() {
     const { data: product, loading } = useProducts(id)
     const navigate = useNavigate()
 
-    const optimizedHeroImg = product?.image_url?.replace(/\.[^/.]+$/, ".webp")
+    const imageUrl = product?.image_url || ""
+    const optimizedHeroImg = imageUrl ? imageUrl.replace(/\.[^/.]+$/, ".webp") : ""
 
     // Valeurs par défaut pendant le chargement pour éviter le vide SEO
     const seoTitle = loading ? "Découvrez nos spécialités" : product?.name

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../components/atoms/Button/Button';
 import { useRegisterForm } from '../hooks/useRegisterForm';
 
-// Configuration extraite : évite de recréer l'objet à chaque render
+// évite de recréer l'objet à chaque render
 const FORM_FIELDS = [
     { id: 'userName', label: "Nom d'utilisateur", type: 'text', placeholder: 'Votre pseudo' },
     { id: 'email', label: 'Email', type: 'email', placeholder: 'nom@exemple.com' },

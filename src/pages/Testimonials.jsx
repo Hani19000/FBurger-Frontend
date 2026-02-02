@@ -21,20 +21,29 @@ const Testimonials = ({ data, loading }) => {
                 autoplay={{ delay: 5000 }}
                 className="testimonial-swiper"
             >
-                {data.map((item) => (
-                    <SwiperSlide key={item.id}>
-                        <div className="testimonial-card">
-                            <h3 className="testimonial-name">{item.userId?.username}</h3>
-                            <div style={{ marginBottom: '15px' }}>
-                                <StarRating rating={item.rating} isReadOnly={true} size={18} />
+                {data.map((item, index) => {
+                    const key = item.id || item._id || `testimonial-${index}`;
+                    const username = item.userId?.username || 'Utilisateur anonyme';
+
+                    return (
+                        <SwiperSlide key={key}>
+                            <div className="testimonial-card">
+                                <h3 className="testimonial-name">{username}</h3>
+                                <div style={{ marginBottom: '15px' }}>
+                                    <StarRating
+                                        rating={item.rating || 0}
+                                        isReadOnly={true}
+                                        size={18}
+                                    />
+                                </div>
+                                <p className="testimonial-text">"{item.content || 'Aucun commentaire'}"</p>
                             </div>
-                            <p className="testimonial-text">"{item.content}"</p>
-                        </div>
-                    </SwiperSlide>
-                ))}
+                        </SwiperSlide>
+                    )
+                })}
             </Swiper>
         </div>
-    );
-};
+    )
+}
 
 export default Testimonials;

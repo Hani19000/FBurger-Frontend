@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import ProductService from "../features/products/services/productService.js";
 import { handle } from '../utils/promise.js';
 import SEO from '../components/atoms/SEO.jsx';
-
+import toast from 'react-hot-toast';
 
 function Menu() {
   const [products, setProducts] = useState([]);
@@ -20,13 +20,8 @@ function Menu() {
       const [data, error] = await handle(ProductService.getAllProducts());
 
       if (error) {
-        console.error("Erreur lors du chargement:", error);
-        return;
+        return toast.error("Erreur lors du chargement");
       }
-
-      // 2. Les données sont dans res.data
-      // Si l'API renvoie { data: [...] }, utilise res.data.data
-
 
       // Sécurité : s'assurer que c'est un tableau
       setProducts(Array.isArray(data) ? data : []);
@@ -40,7 +35,7 @@ function Menu() {
 
   return (
     <main className="menu-page">
-      {/* SEO Dynamique : On change la description si un filtre est actif  pour montrer aux moteurs de recherche que la page est pertinente.*/}
+      {/* SEO Dynamique : On change la description si un filtre est actif pour montrer aux moteurs de recherche que la page est pertinente.*/}
       <SEO
         title={activeFilter === 'Tout' ? "Notre Carte" : `Nos ${activeFilter}s`}
         description={`Découvrez notre sélection de ${activeFilter === 'Tout' ? 'burgers, frites et boissons' : activeFilter.toLowerCase()} artisanaux. Ingrédients de qualité et recettes exclusives.`}

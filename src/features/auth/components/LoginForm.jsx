@@ -8,7 +8,7 @@ const LOGIN_FIELDS = [
 ];
 
 const LoginForm = () => {
-    const { credentials, isLoading, errorMessage, handleChange, handleSubmit, isSubmitting } = useLoginForm();
+    const { credentials = {}, isLoading, errorMessage, handleChange, handleSubmit, isSubmitting } = useLoginForm();
 
     return (
         <div className="login-card-dark">

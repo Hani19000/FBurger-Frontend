@@ -17,9 +17,9 @@ const StarRating = ({ rating, setRating, isReadOnly = false, size = 20 }) => {
                         key={index}
                         // On désactive le curseur main si c'est en lecture seule
                         style={{
-                            background: 'none',
-                            border: 'none',
-                            cursor: isReadOnly ? 'default' : 'pointer',
+                            background: "none",
+                            border: "none",
+                            cursor: isReadOnly ? "default" : "pointer",
                             padding: 0
                         }}
                         onClick={() => !isReadOnly && setRating(starValue)}

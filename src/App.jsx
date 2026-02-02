@@ -19,8 +19,6 @@ import RoleGuard from './guards/RoleGuard.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import './styles/toasts.css';
 
-
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -44,7 +42,7 @@ const router = createBrowserRouter([
       { path: 'admins', element: <RoleGuard allowedRoles={['admin']}><AdminDashboard /> </RoleGuard> },
 
       // Fallback (si aucune route ne correspond)
-      { path: '*', element: <Navigate to="/home" replace /> }
+      { path: '*', element: <NotFoundPage /> }
     ]
   }
 ]);

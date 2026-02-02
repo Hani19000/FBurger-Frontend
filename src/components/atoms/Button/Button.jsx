@@ -1,22 +1,30 @@
 import { NavLink } from 'react-router-dom';
 import './Button.css';
+import { getButtonClassName } from '../../../utils/button';
 
-// Button.jsx
-export function Button({ className = '', children, text, variant, htmlType = 'button', ...props }) {
-  const combinedClass = `btn ${variant ? `btn-${variant}` : ''} ${className}`.trim();
+export function Button({ htmlType = 'button', ...props }) {
+  const { className, variant, children, text, ...rest } = props;
 
   return (
-    <button className={combinedClass} type={htmlType} {...props}>
+    <button
+      className={getButtonClassName(variant, className)}
+      type={htmlType}
+      {...rest}
+    >
       {text || children}
     </button>
   );
 }
 
-export function LinkButton({ to, className = '', children, text, variant, ...props }) {
-  const combinedClass = `btn ${variant ? `btn-${variant}` : ''} ${className}`.trim();
+export function LinkButton({ to, ...props }) {
+  const { className, variant, children, text, ...rest } = props;
 
   return (
-    <NavLink to={to} className={combinedClass} {...props}>
+    <NavLink
+      to={to}
+      className={getButtonClassName(variant, className)}
+      {...rest}
+    >
       {text || children}
     </NavLink>
   );

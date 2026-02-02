@@ -1,31 +1,36 @@
-import { useState, useEffect } from 'react';
-import ProductService from '../services/productService.js';
-import { handle } from '../../../utils/promise.js';
+import { useState, useEffect } from 'react'
+import ProductService from '../services/productService.js'
+import { handle } from '../../../utils/promise.js'
 
 const useProducts = (id = null) => {
-    const [data, setData] = useState(id ? null : []);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [data, setData] = useState(id ? null : [])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
+        let isMounted = true;
+
         const fetchData = async () => {
-            setLoading(true);
-            setError(null);
+            setLoading(true)
+            setError(null)
             const call = id
                 ? ProductService.getProductById(id)
-                : ProductService.getAllProducts();
-            const [res, err] = await handle(call);
+                : ProductService.getAllProducts()
+            const [res, err] = await handle(call)
+
+            if (!isMounted) return
+
             if (err) {
                 setError(err);
             } else {
-                setData(res || (id ? null : []));
+                setData(res || (id ? null : []))
             }
-            setLoading(false);
-        };
-        fetchData();
-    }, [id]);
+            setLoading(false)
+        }
+        fetchData()
+    }, [id])
 
-    return { data, loading, error };
+    return { data, loading, error }
 }
 
-export default useProducts;
+export default useProducts

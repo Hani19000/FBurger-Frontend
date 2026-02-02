@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import * as Sentry from "@sentry/react";
 
-
 Sentry.init({
   dsn: "https://1866c0cd4397b5992ffd7982a99b48e7@o4510681965199360.ingest.de.sentry.io/4510801137369168",
   integrations: [
@@ -17,8 +16,6 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0,
   environment: import.meta.env.MODE,
 });
-
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
