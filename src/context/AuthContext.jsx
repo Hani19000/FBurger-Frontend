@@ -63,8 +63,7 @@ export const AuthProvider = ({ children }) => {
     }, [updateAuth])
 
     const logout = useCallback(async () => {
-        const [, error] = await handle(authService.logout())
-        if (error) console.error('Logout error:', error)
+        await handle(authService.logout())
         updateAuth(null)
     }, [updateAuth])
 
