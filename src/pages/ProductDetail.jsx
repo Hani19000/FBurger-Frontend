@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import HeroSection from '../components/molecules/HeroSection'
-import useProducts from "../features/products/hooks/useProducts.jsx"
+import useProducts from "../features/products/hooks/useProducts.js"
 import '../styles/productdetail.css'
 import SEO from '../components/atoms/SEO.jsx'
 

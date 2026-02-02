@@ -1,15 +1,15 @@
 import '../styles/home.css'
-import CardsGrid from "../components/atoms/CardsGrid.jsx";
+import CardsGrid from "../components/atoms/CardsGrid.jsx"
 import HeroSection from '../components/molecules/HeroSection.jsx'
 import { Data } from '../Data/DataHeroSection.jsx'
-import FeatureSplit from '../components/molecules/FeatureSplit.jsx';
-import { featuredProduct } from '../Data/featuresData.jsx';
+import FeatureSplit from '../components/molecules/FeatureSplit.jsx'
+import { featuredProduct } from '../Data/featuresData.jsx'
 import Testimonials from './Testimonials.jsx'
-import { useReviews } from '../features/reviews/hooks/useReviews.js';
-import ReviewForm from '../features/reviews/components/ReviewForm.jsx';
-import { cardData } from '../Data/CardHomeData.jsx';
-import SEO from '../components/atoms/SEO.jsx';
-
+import { useReviews } from '../features/reviews/hooks/useReviews.js'
+import ReviewForm from '../features/reviews/components/ReviewForm.jsx'
+import { cardData } from '../Data/CardHomeData.jsx'
+import SEO from '../components/atoms/SEO.jsx'
+import { AnimatedSection } from '../components/atoms/AnimatedSection.jsx'
 
 function Home() {
   const { reviews, loading, submitReview } = useReviews();
@@ -25,9 +25,12 @@ function Home() {
       />
 
       <HeroSection {...HeroContent} />
-      <section className='features-section'>
-        <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />
-      </section>
+
+      <AnimatedSection delay={0.5}>
+        <section className='features-section'>
+          <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />
+        </section>
+      </AnimatedSection>
 
       <FeatureSplit
         data={featuredProduct}
@@ -35,13 +38,14 @@ function Home() {
         showLabel={true}
       />
 
-      <section className="testimonials-section">
-        <div className="container">
-          <Testimonials data={reviews} loading={loading} />
-          <ReviewForm onSubmit={submitReview} />
-        </div>
-      </section>
-
+      <AnimatedSection delay={0.3}>
+        <section className="testimonials-section">
+          <div className="container">
+            <Testimonials data={reviews} loading={loading} />
+            <ReviewForm onSubmit={submitReview} />
+          </div>
+        </section>
+      </AnimatedSection>
     </>
   )
 }

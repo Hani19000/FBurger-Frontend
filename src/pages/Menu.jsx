@@ -9,6 +9,7 @@ import ProductService from "../features/products/services/productService.js";
 import { handle } from '../utils/promise.js';
 import SEO from '../components/atoms/SEO.jsx';
 import toast from 'react-hot-toast';
+import { AnimatedSection } from '../components/atoms/AnimatedSection.jsx'
 
 function Menu() {
   const [products, setProducts] = useState([]);
@@ -42,12 +43,13 @@ function Menu() {
         path="/menu"
       />
       <HeroSection {...heroData} />
-      <section className="menu-section">
-        <FilterBar currentFilter={activeFilter} onFilterChange={setActiveFilter} />
 
-        <CardsGrid data={displayProducts} variant="menu" />
-
-      </section>
+      <AnimatedSection delay={0.3}>
+        <section className="menu-section">
+          <FilterBar currentFilter={activeFilter} onFilterChange={setActiveFilter} />
+          <CardsGrid data={displayProducts} variant="menu" />
+        </section>
+      </AnimatedSection>
     </main>
   );
 }

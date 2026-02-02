@@ -1,11 +1,11 @@
 // Ajout de useEffect dans l'import
-import { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { useAuth } from '../../features/auth/hooks/useAuth';
-import { toast } from 'react-hot-toast';
-import './navbar.css';
-import { useNavbarScroll } from "../../hooks/useScrollDirection.jsx"
-import { Button } from '../atoms/Button/Button.jsx';
+import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../../features/auth/hooks/useAuth'
+import { toast } from 'react-hot-toast'
+import './navbar.css'
+import { useNavbarScroll } from "../../hooks/useScrollDirection.js"
+import { Button } from '../atoms/Button/Button.jsx'
 
 const NavBar = () => {
     const { user, isAuthenticated, logout, loading } = useAuth();
