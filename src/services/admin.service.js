@@ -37,17 +37,53 @@ export const adminService = {
     },
 
     // Gestion des Produits
-    deleteProduct: async (productId) => {
-        await api.delete(`/products/${productId}`);
+    getProducts: async () => {
+        // L'intercepteur renvoie déjà les données, pas besoin de .data.data
+        const response = await api.get('/products');
+        // les produits sont dans la clé 'data' de l'objet renvoyé
+        return response.data || response || [];
     },
 
-    createProduct: async (productData) => {
-        const stats = await api.post('/products', productData);
-        return stats
+    createProduct: async (formData) => {
+        try {
+            // FormData est automatiquement détecté par axios
+            // qui définit le bon Content-Type
+            const product = await api.post('/products', formData);
+            return product;
+        } catch (error) {
+            console.error("Erreur création produit:", error);
+            throw error;
+        }
+    },
+
+    updateProduct: async (id, formData) => {
+        try {
+            // FormData pour l'upload d'image
+            const product = await api.put(`/products/${id}`, formData);
+            return product;
+        } catch (error) {
+            console.error("Erreur mise à jour produit:", error);
+            throw error;
+        }
+    },
+
+    deleteProduct: async (id) => {
+        await api.delete(`/products/${id}`);
     },
 
     // Gestion des Avis
+    getReviews: async () => {
+        try {
+            const reviews = await api.get('/reviews');
+            return Array.isArray(reviews) ? reviews : [];
+        } catch (error) {
+            return error
+        }
+    },
+
     deleteReview: async (reviewId) => {
-        await api.delete(`/reviews/${reviewId}`);
+        // L'interceptor retourne déjà les données
+        const response = await api.delete(`/reviews/${reviewId}`);
+        return response;
     }
 };

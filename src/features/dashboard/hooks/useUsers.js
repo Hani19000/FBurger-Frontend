@@ -1,4 +1,3 @@
-// src/hooks/admin/useUsers.js
 import { useState, useEffect } from 'react'
 import { adminService } from '../../../services/admin.service'
 import { toast } from 'react-hot-toast'

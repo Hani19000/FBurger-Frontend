@@ -19,6 +19,8 @@ import { Toaster } from 'react-hot-toast'
 import GuestGuard from './guards/GuestGuard.jsx'
 import RoleGuard from './guards/RoleGuard.jsx'
 import { HelmetProvider } from 'react-helmet-async'
+import { AdminReviewList } from './features/dashboard/components/AdminReviewList.jsx'
+import { AdminProductList } from './features/dashboard/components/AdminProductList.jsx'
 import './styles/toasts.css'
 
 const router = createBrowserRouter([
@@ -52,6 +54,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <AdminOverview /> },
       { path: 'users', element: <AdminUserList /> },
+      { path: 'reviews', element: <AdminReviewList /> },
+      { path: 'products', element: <AdminProductList /> },
     ]
   },
   // Fallback (si aucune route ne correspond)

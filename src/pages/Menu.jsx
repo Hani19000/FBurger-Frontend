@@ -46,10 +46,10 @@ function Menu() {
 
 
       <section className="menu-section">
-        <AnimatedSection delay={0.3}>
+        <AnimatedSection delay={0.2}>
           <FilterBar currentFilter={activeFilter} onFilterChange={setActiveFilter} />
         </AnimatedSection>
-        <AnimatedSection delay={0.6}>
+        <AnimatedSection delay={0.4}>
           <CardsGrid data={displayProducts} variant="menu" />
         </AnimatedSection>
       </section>

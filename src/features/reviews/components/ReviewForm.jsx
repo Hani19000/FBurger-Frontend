@@ -59,9 +59,10 @@ const ReviewForm = ({ onSubmit }) => {
                         required
                     />
 
-                    <LinkButton
+                    <Button
                         text="PUBLIER MON AVIS"
                         htmlType="submit"
+                        className="neo-btn"
                         disabled={rating === 0 || !comment.trim()}
                     />
                 </form>

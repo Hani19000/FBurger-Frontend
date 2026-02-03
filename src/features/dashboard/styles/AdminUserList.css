@@ -1,3 +1,4 @@
+/* --- Core Layout --- */
 .admin-list-wrapper {
   max-width: 1000px;
   margin: 0 auto;
@@ -73,13 +74,19 @@
 .btn-delete-brutal {
   background: var(--color-gray);
   border: 2px solid #000;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem;
   font-family: var(--font-nippo);
   font-size: 0.8rem;
   cursor: pointer;
-  color: #000;
+  color: var(--color-primary);
   box-shadow: 4px 4px 0px #000;
-  transition: all 0.2s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    background-color 0.2s ease;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
 }
 
 .btn-delete-brutal:hover {
@@ -87,7 +94,77 @@
   color: #fff;
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px #000;
-  width: 50%;
+}
+
+.btn-delete-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+.admin-table td[data-label="Actions"] {
+  text-align: center;
+  width: 150px;
+}
+
+.admin-comment-truncate {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.admin-product-img-wrapper {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #000;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  margin: 0 auto; /* Pour le responsive mobile */
+}
+
+.admin-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-actions-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fond sombre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px); /* Petit effet de flou néo-moderne */
+}
+
+/* On s'assure que le contenu du modal respecte le style brutaliste */
+.modal-overlay .admin-table-container {
+  animation: modalPop 0.2s ease-out;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* --- RESPONSIVE TABLETTE (1024px) --- */
@@ -98,7 +175,7 @@
 
   .admin-table th,
   .admin-table td {
-    padding: 1rem; /* On réduit un peu l'espace */
+    padding: 1rem;
     font-size: 0.9rem;
   }
 }
@@ -125,7 +202,7 @@
     border: 3px solid #000;
     box-shadow: 6px 6px 0px #000;
     margin-bottom: 2rem;
-    padding: 1.5rem; /* Augmentation du padding interne */
+    padding: 1.5rem;
   }
 
   .admin-table td {
@@ -134,17 +211,18 @@
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
-    text-align: right;
-    gap: 1rem; /* Ajout d'un espace de sécurité entre label et valeur */
+    gap: 1rem;
   }
 
-  /* Correction spécifique pour la ligne ACTIONS */
+  /* Correction centrage forcé pour ACTIONS */
   .admin-table td:last-child {
     border-bottom: none;
-    flex-direction: column; /* On empile Label et Bouton */
-    align-items: flex-start; /* Aligné à gauche pour plus de lisibilité */
+    flex-direction: column;
+    justify-content: center !important; /* Force le centrage au milieu de la card */
+    align-items: center !important;
     padding-top: 1.5rem;
-    gap: 0.8rem;
+    gap: 1rem;
+    width: 100%;
   }
 
   .admin-table td::before {
@@ -153,18 +231,30 @@
     text-transform: uppercase;
     font-size: 0.75rem;
     color: #666;
-    min-width: fit-content;
   }
 
-  /* Ajustement du bouton pour qu'il ne flotte plus */
+  /* Centre aussi le label au dessus du bouton */
+  .admin-table td:last-child::before {
+    text-align: center;
+    min-width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
   .btn-delete-brutal {
-    width: 100%; /* Prend toute la largeur de la carte */
-    margin: 0;
-    padding: 0.8rem;
+    width: 55%; /* Un peu moins que 100% pour l'esthétique centrée */
+    max-width: 200px;
+    margin: 0 auto;
     display: block;
+    padding: 0.8rem;
   }
 
   .btn-delete-brutal:hover {
-    width: 100%;
+    width: 80%;
+  }
+
+  .admin-comment-truncate {
+    max-width: none;
+    white-space: normal;
+    text-align: right;
   }
 }

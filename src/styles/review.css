@@ -203,6 +203,29 @@
   letter-spacing: 0.5px;
 }
 
+.neo-btn {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: var(--color-black) !important;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-black) !important;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2) !important;
+  padding: 1rem !important;
+}
+
+.neo-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--color-black) !important;
+  background-color: #2a2a2a !important;
+}
+
+.neo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
   .reviews-container {
