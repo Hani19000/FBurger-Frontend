@@ -164,7 +164,6 @@
     display: block;
   }
 
-  /* Retrait du width 50% sur le hover qui cassait le design */
   .btn-delete-brutal:hover {
     width: 100%;
   }

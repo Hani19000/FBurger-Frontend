@@ -1,9 +1,15 @@
 import { vi } from 'vitest'
+import '@testing-library/jest-dom'
 
-// Mock de react-hot-toast
+
 vi.mock('react-hot-toast', () => ({
     toast: {
-        error: vi.fn(),
         success: vi.fn(),
+        error: vi.fn(),
+        loading: vi.fn(),
     },
+    default: {
+        success: vi.fn(),
+        error: vi.fn(),
+    }
 }))

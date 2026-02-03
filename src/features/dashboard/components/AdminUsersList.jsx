@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useUsers } from '../hooks/useUsers'
 import '../styles/AdminUserList.css'
+import '../styles/adminloader.css'
 import ConfirmModal from './ConfirmModal'
 
 export const AdminUserList = () => {
