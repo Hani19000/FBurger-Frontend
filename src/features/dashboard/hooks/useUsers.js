@@ -12,7 +12,7 @@ export const useUsers = () => {
             const data = await adminService.getUsers();
             setUsers(data);
         } catch {
-            toast.error("Impossible de charger les utilisateurs");
+            // L'intercepteur gère déjà le toast d'erreur réseau
         } finally {
             setLoading(false);
         }
@@ -21,14 +21,27 @@ export const useUsers = () => {
     const handleDelete = async (id) => {
         try {
             await adminService.deleteUser(id);
-            setUsers(users.filter(u => u.id !== id));
+            setUsers(prev => prev.filter(u => u.id !== id));
             toast.success("Utilisateur supprimé");
         } catch {
-            toast.error("Erreur lors de la suppression");
+            // Toast géré par l'intercepteur
+        }
+    };
+
+    const handleUpdate = async (id) => {
+        try {
+            await adminService.updateUserRole(id, 'ADMIN');
+
+            setUsers(prev => prev.map(u =>
+                u.id === id ? { ...u, displayRole: 'ADMIN' } : u
+            ));
+            toast.success("Utilisateur promu Admin");
+        } catch {
+            // Toast géré par l'intercepteur
         }
     };
 
     useEffect(() => { fetchUsers(); }, []);
 
-    return { users, loading, handleDelete, refresh: fetchUsers };
+    return { users, loading, handleDelete, refresh: fetchUsers, handleUpdate };
 };

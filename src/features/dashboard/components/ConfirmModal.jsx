@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import '../styles/ConfirmModal.css'; // On va créer ce CSS juste après
+import '../styles/ConfirmModal.css';
 
 const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message }) => {
     if (!isOpen) return null;

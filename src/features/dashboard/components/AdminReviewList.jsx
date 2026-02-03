@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAdminReviews } from '../hooks/useAdminReviews.js';
 import ConfirmModal from './ConfirmModal';
-import StarRating from '../../../components/atoms/Star/StarRating.jsx'; // Pour afficher la note en lecture seule
+import StarRating from '../../../components/atoms/Star/StarRating.jsx';
 import '../styles/AdminUserList.css';
 
 export const AdminReviewList = () => {

@@ -7,15 +7,14 @@ export const useReviews = () => {
     const [reviews, setReviews] = useState([])
     const [loading, setLoading] = useState(true)
 
-    // Fonction de récupération stable
-    const fetchReviews = useCallback(async () => {
-        setLoading(true)
-
+    const fetchReviews = useCallback(async (showLoader = true) => {
+        if (showLoader) setLoading(true)
         const [data, err] = await handle(reviewService.getAll())
+
+        if (showLoader) setLoading(false)
         return err ? [] : data
     }, []);
 
-    // Fonction d'envoi d'avis exposée au composant
     const submitReview = async (reviewData) => {
         const [, err] = await handle(
             toast.promise(
@@ -30,25 +29,18 @@ export const useReviews = () => {
 
         if (err) return
 
-        // La liste est rafraîchie après un succès
-        const updatedData = await fetchReviews()
+        // OPTION "CLEAN" : On rafraîchit les données en arrière-plan sans bloquer l'UI
+        const updatedData = await fetchReviews(false); // false = pas de loader global
         setReviews(updatedData)
     }
 
     useEffect(() => {
-        let active = true; // Flag pour éviter le cascading render désordonné
-
+        let active = true;
         const load = async () => {
-            setLoading(true);
-            const data = await fetchReviews()
-            if (active) {
-                setReviews(data)
-                setLoading(false)
-            }
+            const data = await fetchReviews(true)
+            if (active) setReviews(data)
         }
-
         load()
-
         return () => { active = false; }
     }, [fetchReviews])
 

@@ -12,7 +12,7 @@ export const useAdminReviews = () => {
             const data = await adminService.getReviews()
             setReviews(data)
         } catch {
-            toast.error("Impossible de charger les avis")
+            // Erreur gérée globalement
         } finally {
             setLoading(false)
         }
@@ -22,9 +22,9 @@ export const useAdminReviews = () => {
         try {
             await adminService.deleteReview(id);
             setReviews(prev => prev.filter(r => r._id !== id))
-            toast.success("Avis supprimé définitivement")
+            toast.success("Avis supprimé")
         } catch {
-            toast.error("Erreur lors de la suppression")
+            // Erreur gérée globalement
         }
     }
 

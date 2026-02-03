@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { adminService } from '../../../services/admin.service.js';
+import { toast } from 'react-hot-toast';
 
 export const useAdminProducts = () => {
     const [products, setProducts] = useState([]);
@@ -10,8 +11,8 @@ export const useAdminProducts = () => {
             setLoading(true);
             const data = await adminService.getProducts();
             setProducts(data);
-        } catch (error) {
-            console.error("Erreur chargement produits:", error);
+        } catch {
+            // Erreur gérée globalement
         } finally {
             setLoading(false);
         }
@@ -20,11 +21,11 @@ export const useAdminProducts = () => {
     const handleCreate = async (formData) => {
         try {
             const newProduct = await adminService.createProduct(formData);
-            // On rafraîchit la liste ou on ajoute le nouveau produit au state
-            setProducts(prev => [...prev, newProduct.data || newProduct]);
+            // Mise à jour optimiste de l'interface
+            setProducts(prev => [...prev, newProduct]);
+            toast.success("Produit créé avec succès");
             return true;
-        } catch (error) {
-            console.error("Erreur création:", error);
+        } catch {
             return false;
         }
     };
@@ -32,12 +33,11 @@ export const useAdminProducts = () => {
     const handleUpdate = async (id, formData) => {
         try {
             const updatedProduct = await adminService.updateProduct(id, formData);
-            // Extraction des données selon la structure de ton intercepteur
-            const productData = updatedProduct.data || updatedProduct;
-            setProducts(prev => prev.map(p => p.id === id ? productData : p));
+            // Remplacement du produit modifié dans la liste
+            setProducts(prev => prev.map(p => p.id === id ? updatedProduct : p));
+            toast.success("Produit mis à jour");
             return true;
-        } catch (error) {
-            console.error("Erreur update:", error);
+        } catch {
             return false;
         }
     };
@@ -46,9 +46,9 @@ export const useAdminProducts = () => {
         try {
             await adminService.deleteProduct(id);
             setProducts(prev => prev.filter(p => p.id !== id));
+            toast.success("Produit supprimé");
             return true;
         } catch {
-            alert("Erreur lors de la suppression");
             return false;
         }
     };

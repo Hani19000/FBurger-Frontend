@@ -7,56 +7,57 @@ const api = axios.create({
     withCredentials: true,
 });
 
+/**
+ * Gestion centralisée des erreurs de réponse
+ */
 const handleResponseError = (error) => {
-    const { status, config, data } = error.response || {} //récupération des données ici
-    const url = config?.url || ''
+    const { status, config, data } = error.response || {};
+    const url = config?.url || '';
 
-    // --- 1. NEUTRALISATION ---
-    if (status === 401 && url.includes('/auth/me')) return Promise.resolve(null)
-    if (status === 404 && url.includes('/review')) return Promise.resolve([])
+    // Neutralisation des erreurs attendues pour éviter des alertes inutiles
+    if (status === 401 && url.includes('/auth/me')) return Promise.resolve(null);
+    if (status === 404 && url.includes('/review')) return Promise.resolve([]);
 
-    // --- 2. EXTRACTION DU MESSAGE SERVEUR ---
-    const serverMessage = data?.message || data?.error
+    const serverMessage = data?.message || data?.error;
 
-    // SI LA REQUÊTE DEMANDE LE SILENCE, ON NE FAIT RIEN (sauf rejeter)
+    // Sortie immédiate si le silence est requis par la configuration de la requête
     if (config?.skipGlobalToast) {
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
 
-    // --- 3. GESTION DES ERREURS GLOBALES ---
+    // Traitement des notifications selon le code d'état HTTP
     switch (status) {
-        case 400: // Ajout du cas 400 (Bad Request / Validation)
-            toast.error(serverMessage || "Données invalides")
-            break
+        case 400:
+            toast.error(serverMessage || "Données invalides");
+            break;
         case 401:
             executeLogout();
-            toast.error("Session expirée")
-            break
+            toast.error("Session expirée");
+            break;
         case 403:
-            toast.error("Accès refusé")
-            break
+            toast.error("Accès refusé");
+            break;
         case 409:
-            toast.error(serverMessage || "Cette ressource existe déjà")
-            break
+            toast.error(serverMessage || "Cette ressource existe déjà");
+            break;
         case 500:
-            toast.error("Erreur serveur")
-            break
+            toast.error("Erreur serveur interne");
+            break;
         default:
             if (!error.response) {
                 toast.error("Serveur hors ligne");
             } else {
-                // Pour toutes les autres erreurs avec une réponse
-                toast.error(serverMessage || "Une erreur est survenue")
+                toast.error(serverMessage || "Une erreur est survenue");
             }
-            break
+            break;
     }
 
-    return Promise.reject(error)
+    return Promise.reject(error);
 }
 
 api.interceptors.response.use(
     (response) => response.data?.data || response.data,
     handleResponseError
-)
+);
 
-export default api
+export default api;
