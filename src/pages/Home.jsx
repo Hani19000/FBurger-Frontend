@@ -26,7 +26,7 @@ function Home() {
 
       <HeroSection {...HeroContent} />
 
-      <AnimatedSection delay={0.5}>
+      <AnimatedSection delay={0.3}>
         <section className='features-section'>
           <CardsGrid data={cardData} title="Notre meilleure sélection" isStatic={true} />
         </section>

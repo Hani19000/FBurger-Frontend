@@ -33,7 +33,7 @@ const FeatureSplit = ({ data }) => {
                     <p className="feature-description">{data.description}</p>
 
                     <LinkButton
-                        type="btn"
+                        variant="btn"
                         text={data.buttonText}
                         to="/menu"
                     />

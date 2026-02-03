@@ -1,0 +1,171 @@
+.admin-list-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+.admin-list-header {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.admin-list-header p {
+  font-family: var(--font-switzer);
+  font-size: 1.1rem;
+  color: var(--color-black);
+  opacity: 0.8;
+}
+
+/* --- Table Container --- */
+.admin-table-container {
+  border: 3px solid #000;
+  box-shadow: 10px 10px 0px #000;
+  background-color: #fff;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background-color: #000;
+}
+
+.admin-table th {
+  background: #000;
+  color: var(--color-primary);
+  font-family: var(--font-nippo);
+  text-transform: uppercase;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.admin-table td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 2px solid #000;
+  font-family: var(--font-switzer);
+  font-weight: 500;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* --- Badges & Buttons --- */
+.role-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #000;
+  font-family: var(--font-nippo);
+  font-size: 0.75rem;
+  background: #fff;
+  box-shadow: 3px 3px 0px #000;
+}
+
+.role-badge.admin {
+  background-color: var(--color-primary);
+}
+
+.btn-delete-brutal {
+  background: var(--color-gray);
+  border: 2px solid #000;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-nippo);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #000;
+  box-shadow: 4px 4px 0px #000;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-brutal:hover {
+  background-color: #ff4757;
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  width: 50%;
+}
+
+/* --- RESPONSIVE TABLETTE (1024px) --- */
+@media (max-width: 1024px) {
+  .admin-list-wrapper {
+    padding-top: 2rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 1rem; /* On réduit un peu l'espace */
+    font-size: 0.9rem;
+  }
+}
+
+/* --- RESPONSIVE MOBILE (393px) --- */
+@media (max-width: 393px) {
+  .admin-title {
+    font-size: 2.2rem;
+  }
+
+  .admin-table-container {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tbody tr {
+    display: block;
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0px #000;
+    margin-bottom: 2rem;
+    padding: 1.5rem; /* Augmentation du padding interne */
+  }
+
+  .admin-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    text-align: right;
+    gap: 1rem; /* Ajout d'un espace de sécurité entre label et valeur */
+  }
+
+  /* Correction spécifique pour la ligne ACTIONS */
+  .admin-table td:last-child {
+    border-bottom: none;
+    flex-direction: column; /* On empile Label et Bouton */
+    align-items: flex-start; /* Aligné à gauche pour plus de lisibilité */
+    padding-top: 1.5rem;
+    gap: 0.8rem;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-nippo);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #666;
+    min-width: fit-content;
+  }
+
+  /* Ajustement du bouton pour qu'il ne flotte plus */
+  .btn-delete-brutal {
+    width: 100%; /* Prend toute la largeur de la carte */
+    margin: 0;
+    padding: 0.8rem;
+    display: block;
+  }
+
+  /* Retrait du width 50% sur le hover qui cassait le design */
+  .btn-delete-brutal:hover {
+    width: 100%;
+  }
+}

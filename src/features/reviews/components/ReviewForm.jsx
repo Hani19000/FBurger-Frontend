@@ -59,10 +59,9 @@ const ReviewForm = ({ onSubmit }) => {
                         required
                     />
 
-                    <Button
+                    <LinkButton
                         text="PUBLIER MON AVIS"
                         htmlType="submit"
-                        variant="black"
                         disabled={rating === 0 || !comment.trim()}
                     />
                 </form>

@@ -107,6 +107,7 @@
   z-index: 105;
   animation: fadeIn 0.3s ease;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -115,6 +116,33 @@
     opacity: 1;
   }
 }
+
+.btn-neo {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border: 2px solid #000 !important; /* Bordure noire épaisse */
+  font-family: var(--font-nippo);
+  font-size: var(--font-size-18);
+  text-transform: uppercase;
+  background-color: var(--color-primary) !important; /* Fond orange/jaune */
+  color: #000 !important;
+  box-shadow: 3px 3px 0px #000 !important; /* L'ombre décalée typique */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Effet Néon au survol */
+.btn-neo:hover {
+  transform: translate(-2px, -2px); /* Petit saut au survol */
+  box-shadow: 5px 5px 0px #000 !important;
+}
+
+/* Effet clic (enfoncement) */
+.btn-neo:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000 !important;
+}
+
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
   .menu {

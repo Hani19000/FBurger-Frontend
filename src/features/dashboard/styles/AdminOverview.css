@@ -1,0 +1,119 @@
+.admin-overview-header {
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.admin-title {
+  font-family: var(--font-nippo);
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: var(--color-black);
+  letter-spacing: -1px;
+}
+
+.admin-separator {
+  width: 120px;
+  height: 8px;
+  background-color: var(--color-black);
+  margin: 1rem auto 1rem;
+}
+
+.admin-overview-header p {
+  font-family: var(--font-switzer);
+  font-size: 1.2rem;
+  color: var(--color-black);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.admin-stat-card {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-black);
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 10px 10px 0px var(--color-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+  border: 3px solid #000;
+  box-shadow: 8px 8px 0px #000;
+}
+
+.admin-stat-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    12px 12px 0px #000,
+    -6px -6px 0px #000;
+
+  background-color: var(--color-gray);
+}
+
+.admin-stat-card:hover .card-title,
+.admin-stat-card:hover .card-value,
+.admin-stat-card:hover .card-label {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.admin-stat-card:hover .card-top-accent {
+  border-bottom-color: var(--color-primary);
+}
+.card-top-accent {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid var(--color-black);
+}
+
+.card-title {
+  font-family: var(--font-nippo);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.2);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.card-value {
+  font-family: var(--font-nippo);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-black);
+  line-height: 1;
+}
+
+.card-label {
+  font-family: var(--font-switzer);
+  font-size: 1rem;
+  color: rgba(30, 30, 30, 0.7);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.admin-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  font-family: var(--font-nippo);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}

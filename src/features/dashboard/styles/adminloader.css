@@ -1,0 +1,59 @@
+/* --- ADMIN LOADER --- */
+.admin-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; /* S'adapte à la hauteur de la zone de contenu */
+  width: 100%;
+  font-family: var(--font-nippo);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: var(--color-black);
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Animation de clignotement type "Old School / Brutaliste" */
+.admin-loader::after {
+  content: "...";
+  display: inline-block;
+  width: 20px;
+  text-align: left;
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: "";
+  }
+  40% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  80% {
+    content: "...";
+  }
+}
+
+/* --- RESPONSIVE 1024px --- */
+@media (max-width: 1024px) {
+  .admin-loader {
+    font-size: 1.5rem;
+    min-height: 50vh;
+  }
+}
+
+/* --- RESPONSIVE 393px --- */
+@media (max-width: 393px) {
+  .admin-loader {
+    font-size: 1.1rem; /* Réduction pour éviter le wrap sur mobile */
+    letter-spacing: 1px;
+    padding: 1rem;
+    min-height: 40vh;
+  }
+}

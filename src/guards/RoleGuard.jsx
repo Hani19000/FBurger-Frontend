@@ -13,8 +13,10 @@ const RoleGuard = ({ children, allowedRoles = [] }) => {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
+    const userRole = user?.Role?.name;
+
     // Si connecté mais n'a pas le bon rôle -> redirection home
-    if (!allowedRoles.includes(user?.roleName)) {
+    if (!allowedRoles.includes(userRole)) {
         return <Navigate to="/home" replace />;
     }
 

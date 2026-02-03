@@ -1,6 +1,6 @@
 // Ajout de useEffect dans l'import
-import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useState, useEffect, } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../features/auth/hooks/useAuth'
 import { toast } from 'react-hot-toast'
 import './navbar.css'
@@ -9,8 +9,11 @@ import { Button } from '../atoms/Button/Button.jsx'
 
 const NavBar = () => {
     const { user, isAuthenticated, logout, loading } = useAuth();
+    const navigate = useNavigate(); // navigation via bouton
     const isHidden = useNavbarScroll(600);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const isAdmin = isAuthenticated && Number(user?.roleId) === 3;
 
     // Bloquer/Débloquer le scroll du corps de page
     useEffect(() => {
@@ -43,6 +46,7 @@ const NavBar = () => {
                     <li><NavLink to="/home" className="nav-link" onClick={() => setMenuOpen(false)}>Accueil</NavLink></li>
                     <li><NavLink to="/menu" className="nav-link" onClick={() => setMenuOpen(false)}>Menu</NavLink></li>
                     <li><NavLink to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>À propos</NavLink></li>
+
                     {isAuthenticated && (
                         <li><NavLink to="/review" className="nav-link" onClick={() => setMenuOpen(false)}>Avis</NavLink></li>
                     )}
@@ -52,9 +56,21 @@ const NavBar = () => {
                     {isAuthenticated ? (
                         <>
                             <span className="user-name">{user?.username}</span>
+
+                            {isAdmin && (
+                                <Button
+                                    text="Dashboard"
+                                    className="btn-neo"
+                                    onClick={() => {
+                                        navigate('/admin');
+                                        setMenuOpen(false);
+                                    }}
+                                />
+                            )}
+
                             <Button
                                 text="Déconnexion"
-                                type="btn"
+                                className="btn-neo"
                                 onClick={handleLogout}
                             />
                         </>

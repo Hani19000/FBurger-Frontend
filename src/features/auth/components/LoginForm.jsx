@@ -34,6 +34,7 @@ const LoginForm = () => {
 
                 <div className="btn-container-center">
                     <Button
+                        variant="black"
                         htmlType="submit"
                         text={isLoading ? "Connexion..." : "Se connecter"}
                         disabled={isSubmitting || isLoading}
