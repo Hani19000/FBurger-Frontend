@@ -60,7 +60,7 @@ const NavBar = () => {
                             {isAdmin && (
                                 <Button
                                     text="Dashboard"
-                                    className="btn-neo"
+                                    className="btn-neo-black"
                                     onClick={() => {
                                         navigate('/admin');
                                         setMenuOpen(false);
