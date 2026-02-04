@@ -29,9 +29,9 @@ const Review = lazy(() => import('./pages/Review.jsx'));
 
 // Admin Features (Lazy pour alléger le bundle principal)
 const AdminOverview = lazy(() => import('./features/dashboard/components/AdminOverview.jsx'));
-const AdminUserList = lazy(() => import('./features/dashboard/components/AdminUsersList.jsx'));
-const AdminReviewList = lazy(() => import('./features/dashboard/components/AdminReviewList.jsx'));
-const AdminProductList = lazy(() => import('./features/dashboard/components/AdminProductList.jsx'));
+const AdminUserList = lazy(() => import('./features/dashboard/components/AdminUsersList.jsx').then(module => ({ default: module.AdminUserList })));
+const AdminReviewList = lazy(() => import('./features/dashboard/components/AdminReviewList.jsx').then(module => ({ default: module.AdminReviewList })));
+const AdminProductList = lazy(() => import('./features/dashboard/components/AdminProductList.jsx').then(module => ({ default: module.AdminProductList })));
 
 // Loader simple pour le Suspense
 const PageLoader = () => <div className="admin-loader">Chargement...</div>;

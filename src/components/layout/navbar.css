@@ -117,34 +117,6 @@
   }
 }
 
-.btn-neo {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  border: 2px solid var(--color-black) !important;
-  font-family: var(--font-nippo);
-  font-size: var(--font-size-18);
-  text-transform: uppercase;
-  background-color: var(--color-primary) !important;
-  color: var(--color-black) !important;
-  box-shadow: 3px 3px 0px var(--color-black) !important;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-neo-black {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  border: 2px solid var(--color-black) !important;
-  font-family: var(--font-nippo);
-  font-size: var(--font-size-18);
-  text-transform: uppercase;
-  background-color: var(--color-black) !important;
-  color: var(--color-primary) !important;
-  box-shadow: 3px 3px 0px var(--color-primary) !important;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
 /* --- Responsive Layout --- */
 @media (max-width: 1024px) {
   .menu {

@@ -19,7 +19,7 @@
 
 /* Version Noire (Inversion des couleurs) */
 .btn-black {
-  background-color: #000 !important;
+  background-color: var(--color-black) !important;
   color: var(--color-primary) !important;
   border: 2px solid var(--color-black) !important;
   box-shadow: 3px 3px 0px var(--color-primary) !important;

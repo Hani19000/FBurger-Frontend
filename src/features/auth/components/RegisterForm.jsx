@@ -35,7 +35,7 @@ const RegisterForm = () => {
 
                 <div className="btn-container-center">
                     <Button
-                        variant="black"
+                        className="btn"
                         htmlType="submit"
                         text={isLoading ? "Création..." : "S'inscrire"}
                         disabled={isSubmitting} // Sécurité : empêche le double clic
