@@ -9,10 +9,10 @@
 .login-container {
   display: flex;
   width: 100%;
-  max-width: 1200px; /* Largeur max comme sur Figma */
+  max-width: 1200px;
   min-height: 700px;
-  background: var(--color-primary); /* Fond crème global */
-  border-radius: 20px; /* Arrondi global du container */
+  background: var(--color-primary);
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
@@ -21,19 +21,18 @@
 .left-panel {
   flex: 1;
   position: relative;
-  background-image: url('/images/login_hero.webp'); /* Mets ton image ici */
+  background-image: url("/images/login_hero.webp");
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  overflow: hidden; /* Pour couper les cercles qui dépassent */
+  overflow: hidden;
 }
 
-/* Overlay sombre pour lire le texte sur l'image */
 .left-panel::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -54,10 +53,10 @@
   max-width: 400px;
 }
 
-/* Cercles décoratifs (Figma Style) */
+/* Cercles décoratifs */
 .circle {
   position: absolute;
-  border: 2px solid rgba(233, 230, 195, 0.5); /* Couleur crème semi-transparente */
+  border: 2px solid rgba(233, 230, 195, 0.5);
   border-radius: 100%;
   z-index: 1;
   pointer-events: none;
@@ -83,11 +82,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/images/texture2.webp'); /* Ta texture crème */
-  background-color: var(--color-primary); /* Fallback couleur */
+  background-image: url("/images/texture2.webp");
+  background-color: var(--color-primary);
 }
 
-/* La Card Noire Flottante */
 .login-card-dark {
   background-color: var(--color-black);
   padding: 3rem;
@@ -111,14 +109,13 @@
   color: var(--color-primary);
 }
 
-/* Inputs Beiges */
 .input-beige {
   background-color: var(--color-primary);
   border: none;
   border-radius: 6px;
   padding: 1rem;
   font-family: var(--font-switzer);
-  color: #1c1c1c; /* Texte sombre dans input clair */
+  color: #1c1c1c;
   font-weight: 500;
 }
 
@@ -167,7 +164,42 @@
 }
 
 /* --- RESPONSIVE --- */
+
+/* Tablette paysage (1024px) */
 @media (max-width: 1024px) {
+  .login-container {
+    max-width: 1000px;
+    min-height: 650px;
+    margin: 0 20px;
+  }
+
+  .left-panel {
+    padding: 2.5rem;
+  }
+
+  .overlay-content {
+    font-size: 1.3rem;
+    max-width: 380px;
+  }
+
+  .login-card-dark {
+    padding: 2.8rem;
+    width: 82%;
+  }
+
+  .circle-1 {
+    width: 280px;
+    height: 280px;
+  }
+
+  .circle-2 {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+/* Tablette portrait (768px) */
+@media (max-width: 768px) {
   .login-container {
     max-width: 900px;
     min-height: 600px;
@@ -198,9 +230,10 @@
   }
 }
 
-@media (max-width: 393px) {
+/* Smartphone portrait/paysage (480px) */
+@media (max-width: 480px) {
   .login-split-screen {
-    background-color: var(--color-primary); /* Cohérence fond mobile */
+    background-color: var(--color-primary);
   }
 
   .login-container {
@@ -212,8 +245,15 @@
   }
 
   .left-panel {
-    display: none; /* Masquage panel image pour focus formulaire */
+    display: none;
+    /* min-height: 250px;
+    padding: 2rem 1.5rem; */
   }
+
+  /* .overlay-content {
+    font-size: 1.1rem;
+    max-width: 100%;
+  } */
 
   .right-panel {
     flex: 1;
@@ -228,8 +268,8 @@
   }
 
   .input-beige {
-    padding: 0.8rem;
-    font-size: 16px; /* Évite le zoom automatique iOS sur input */
+    padding: 0.9rem;
+    font-size: 16px;
   }
 
   .btn-container-center button {
@@ -240,5 +280,35 @@
   .form-footer {
     font-size: 0.9rem;
     line-height: 1.5;
+  }
+}
+
+/* Smartphone portrait (375px) */
+@media (max-width: 375px) {
+  .left-panel {
+    /* min-height: 200px;
+    padding: 1.5rem 1rem; */
+    display: none;
+  }
+
+  /* .overlay-content {
+    font-size: 1rem;
+  } */
+
+  .login-card-dark {
+    width: 92%;
+    padding: 1.8rem 1.2rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .input-beige {
+    padding: 0.8rem;
+  }
+
+  .form-footer {
+    font-size: 0.85rem;
   }
 }

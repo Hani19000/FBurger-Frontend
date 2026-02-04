@@ -1,6 +1,6 @@
 import { useProductForm } from '../hooks/useProductForm'
 import { PRODUCT_CATEGORIES } from '../../../constants/categories'
-import '../styles/AdminUserList.css';
+import '../styles/ProductModal.css';
 
 const ProductModal = ({ isOpen, onClose, onSave, product }) => {
     // Appel du hook de logique de formulaire

@@ -68,7 +68,7 @@
 
 /* les batons */
 .feature-card::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -82,7 +82,7 @@
 
 /* Le point fixe */
 .feature-card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -101,6 +101,7 @@
 .feature-card:nth-child(2)::before {
   height: 450px;
 }
+
 .feature-card:nth-child(2)::after {
   top: 0;
 }
@@ -235,7 +236,6 @@
 }
 
 /* --- TESTIMONIALS SECTION --- */
-
 .testimonials-section {
   background-color: #e9e6c3;
   padding: 100px 0;
@@ -299,12 +299,6 @@ section.testimonials-section .testimonial-swiper {
   margin: 0 auto;
 }
 
-/*-- variante avec !important pour forcer le style dessus de celui de swipper
-.testimonial-swiper {
-  padding-bottom: 60px !important;
-  max-width: 950px;
-}*/
-
 .testimonials-section .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
@@ -329,6 +323,8 @@ section.testimonials-section .testimonial-swiper {
 }
 
 /* --- RESPONSIVE --- */
+
+/* Tablette paysage (1024px) */
 @media (max-width: 1024px) {
   .hero-section {
     height: 80vh;
@@ -430,33 +426,130 @@ section.testimonials-section .testimonial-swiper {
   }
 }
 
-@media (max-width: 393px) {
-  /* --- HERO SECTION --- */
+/* Tablette portrait (768px) */
+@media (max-width: 768px) {
+  /* Features Section */
+  .features-section {
+    padding: 60px 20px;
+    margin-bottom: 5rem;
+  }
 
+  .features-section h2 {
+    font-size: 2rem;
+  }
+
+  .features-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 8rem;
+    margin-top: 5rem;
+  }
+
+  .feature-card {
+    width: 300px;
+    height: 400px;
+  }
+
+  .feature-card:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .feature-card::before {
+    display: none;
+  }
+
+  /* Best Menu */
+  .feature-split-section {
+    padding: 80px 20px;
+  }
+
+  .feature-split-container {
+    flex-direction: column-reverse;
+    gap: 4rem;
+  }
+
+  .feature-split-content {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .feature-split-content h2 {
+    font-size: 2rem;
+  }
+
+  .feature-split-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .feature-split-content .btn {
+    margin-top: -2rem;
+  }
+
+  .feature-split-image img {
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+    max-width: 550px;
+    border-bottom-left-radius: 60px;
+  }
+
+  .image-label {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    font-size: 1.3rem;
+  }
+
+  .feature-description {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
+
+  /* Testimonials */
+  .testimonials-section {
+    padding: 60px 20px;
+  }
+
+  .testimonial-card {
+    padding: 40px 25px;
+    border-radius: 40px;
+    width: 95%;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+  }
+}
+
+/* Smartphone portrait/paysage (480px) */
+@media (max-width: 480px) {
   .hero-section {
     height: 100vh;
-    background-position: center;
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.1;
   }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0 20px;
     max-width: 100%;
   }
 
-  /* --- FEATURES SECTION --- */
+  /* Features Section */
   .features-section {
-    padding: 60px 15px;
+    padding: 50px 15px;
+    margin-top: 2rem;
   }
 
   .features-grid {
-    gap: 4rem;
-    margin-top: 3rem;
+    gap: 5rem;
+    margin-top: 4rem;
   }
 
   .feature-card {
@@ -470,19 +563,16 @@ section.testimonials-section .testimonial-swiper {
     height: 8px;
   }
 
-  /* --- BEST MENU  --- */
+  /* Best Menu */
   .feature-split-section {
-    padding: 80px 20px;
+    padding: 60px 15px;
   }
 
   .feature-split-container {
-    flex-direction: column-reverse;
-    gap: 4rem;
+    gap: 3rem;
   }
 
   .feature-split-content {
-    align-items: center;
-    text-align: center;
     gap: 2rem;
   }
 
@@ -493,45 +583,81 @@ section.testimonials-section .testimonial-swiper {
   }
 
   .feature-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
     padding: 0 10px;
   }
 
-  /* Le bouton "Voir le menu" */
   .feature-split-content .btn {
     margin-top: 0.5rem;
-    padding: 15px 30px;
+    padding: 12px 25px;
   }
 
-  /* L'image du burger */
   .feature-split-image img {
-    max-height: 300px;
+    max-height: 320px;
     width: 100%;
-    object-fit: cover;
-    margin-top: 1rem;
   }
 
   .image-label {
-    left: 60px;
-    top: 25px;
-    font-size: 1rem;
+    left: 50%;
+    top: 20px;
+    font-size: 1.1rem;
   }
 
-  /* --- TESTIMONIALS --- */
+  /* Testimonials */
   .testimonials-section {
     padding: 50px 15px;
   }
 
   .testimonial-card {
-    padding: 30px 20px;
-    border-radius: 30px;
+    padding: 35px 20px;
+    border-radius: 35px;
   }
 
   .testimonial-text {
     font-size: 0.95rem;
     line-height: 1.5;
+  }
+}
+
+/* Smartphone portrait (375px) */
+@media (max-width: 375px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .features-section {
+    padding: 40px 10px;
+  }
+
+  .features-grid {
+    gap: 4rem;
+  }
+
+  .feature-card {
+    width: 260px;
+    height: 330px;
+  }
+
+  .feature-split-section {
+    padding: 50px 10px;
+  }
+
+  .feature-split-image img {
+    max-height: 280px;
+  }
+
+  .image-label {
+    font-size: 1rem;
+  }
+
+  .testimonial-card {
+    padding: 30px 15px;
+    border-radius: 30px;
   }
 
   .testimonial-avatar {

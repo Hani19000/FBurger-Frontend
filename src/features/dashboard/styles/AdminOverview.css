@@ -54,7 +54,6 @@
   box-shadow:
     12px 12px 0px #000,
     -6px -6px 0px #000;
-
   background-color: var(--color-gray);
 }
 
@@ -68,6 +67,7 @@
 .admin-stat-card:hover .card-top-accent {
   border-bottom-color: var(--color-primary);
 }
+
 .card-top-accent {
   position: absolute;
   top: -12px;
@@ -116,4 +116,177 @@
   font-family: var(--font-nippo);
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablette paysage (1024px) */
+@media (max-width: 1024px) {
+  .admin-overview-header {
+    margin-bottom: 5rem;
+  }
+
+  .admin-title {
+    font-size: 3rem;
+  }
+
+  .admin-separator {
+    width: 100px;
+    height: 7px;
+  }
+
+  .admin-overview-header p {
+    font-size: 1.1rem;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .admin-stats-grid .admin-stat-card:nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .admin-stat-card {
+    padding: 2.2rem;
+  }
+
+  .card-value {
+    font-size: 3.5rem;
+  }
+}
+
+/* Tablette portrait (768px) */
+@media (max-width: 768px) {
+  .admin-overview-header {
+    margin-bottom: 4rem;
+  }
+
+  .admin-title {
+    font-size: 2.5rem;
+  }
+
+  .admin-separator {
+    width: 80px;
+    height: 6px;
+  }
+
+  .admin-overview-header p {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .admin-stats-grid .admin-stat-card:nth-child(3) {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .card-value {
+    font-size: 3rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Smartphone portrait/paysage (480px) */
+@media (max-width: 480px) {
+  .admin-overview-header {
+    margin-bottom: 3rem;
+  }
+
+  .admin-title {
+    font-size: 2rem;
+  }
+
+  .admin-separator {
+    width: 70px;
+    height: 5px;
+  }
+
+  .admin-overview-header p {
+    font-size: 0.95rem;
+    padding: 0 15px;
+  }
+
+  .admin-stats-grid {
+    gap: 1.8rem;
+  }
+
+  .admin-stat-card {
+    padding: 2rem;
+  }
+
+  .card-value {
+    font-size: 2.8rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-label {
+    font-size: 0.9rem;
+  }
+
+  .admin-loader {
+    font-size: 1.3rem;
+    height: 350px;
+  }
+}
+
+/* Smartphone portrait (375px) */
+@media (max-width: 375px) {
+  .admin-overview-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .admin-title {
+    font-size: 1.8rem;
+  }
+
+  .admin-separator {
+    width: 60px;
+    height: 4px;
+  }
+
+  .admin-overview-header p {
+    font-size: 0.9rem;
+  }
+
+  .admin-stats-grid {
+    gap: 1.5rem;
+  }
+
+  .admin-stat-card {
+    padding: 1.8rem;
+  }
+
+  .card-value {
+    font-size: 2.5rem;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-label {
+    font-size: 0.85rem;
+  }
+
+  .admin-loader {
+    font-size: 1.1rem;
+    height: 300px;
+  }
 }

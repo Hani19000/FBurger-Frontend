@@ -1,7 +1,7 @@
 import { useProductListController } from '../hooks/controllers/useProductListController';
 import ConfirmModal from './ConfirmModal';
 import ProductModal from './ProductModal';
-import '../styles/AdminUserList.css';
+import '../styles/AdminProductList.css';
 
 export const AdminProductList = () => {
     // Injection de dépendance via le Controller
@@ -14,17 +14,17 @@ export const AdminProductList = () => {
     if (loading) return <div className="admin-loader">Chargement du menu...</div>;
 
     return (
-        <div className="admin-list-wrapper">
-            <header className="admin-list-header">
-                <h1 className="admin-title">Gestion Carte</h1>
-                <div className="admin-separator"></div>
-                <button className="btn-delete-brutal btn-primary" onClick={openCreate}>
+        <div className="admin-product-wrapper">
+            <header className="admin-product-header">
+                <h1 className="admin-product-title">Gestion Carte</h1>
+                <div className="admin-product-separator"></div>
+                <button className="admin-product-btn admin-product-btn-add" onClick={openCreate}>
                     + Ajouter un Produit
                 </button>
             </header>
 
-            <div className="admin-table-container">
-                <table className="admin-table">
+            <div className="admin-product-table-container">
+                <table className="admin-product-table">
                     <thead>
                         <tr>
                             <th>Image</th><th>Nom</th><th>Catégorie</th><th>Prix</th><th>Actions</th>
@@ -44,14 +44,14 @@ export const AdminProductList = () => {
                                     </div>
                                 </td>
                                 <td className="font-nippo" data-label="Nom">{product?.name}</td>
-                                <td data-label="Catégorie"><span className="role-badge">{product?.categorie}</span></td>
+                                <td data-label="Catégorie"><span className="admin-product-badge">{product?.categorie}</span></td>
                                 <td data-label="Prix">{(product?.prix || 0)}€</td>
                                 <td data-label="Actions">
-                                    <div className="admin-actions-cell">
-                                        <button className="btn-delete-brutal btn-edit" onClick={() => openEdit(product)}>
+                                    <div className="admin-product-actions">
+                                        <button className="admin-product-btn admin-product-btn-edit" onClick={() => openEdit(product)}>
                                             Modifier
                                         </button>
-                                        <button className="btn-delete-brutal" onClick={() => openDelete(product)}>
+                                        <button className="admin-product-btn admin-product-btn-delete" onClick={() => openDelete(product)}>
                                             Supprimer
                                         </button>
                                     </div>

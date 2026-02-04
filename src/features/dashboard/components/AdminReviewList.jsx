@@ -1,7 +1,7 @@
 import { useReviewListController } from '../hooks/controllers/useReviewListController.js'
 import ConfirmModal from './ConfirmModal'
 import StarRating from '../../../components/atoms/Star/StarRating.jsx'
-import '../styles/AdminUserList.css'
+import '../styles/AdminReviewList.css'
 
 export const AdminReviewList = () => {
     const {
@@ -16,15 +16,15 @@ export const AdminReviewList = () => {
     if (loading) return <div className="admin-loader">Synchronisation des avis...</div>;
 
     return (
-        <div className="admin-list-wrapper">
-            <header className="admin-list-header">
-                <h1 className="admin-title">Avis Clients</h1>
-                <div className="admin-separator"></div>
+        <div className="admin-review-wrapper">
+            <header className="admin-review-header">
+                <h1 className="admin-review-title">Avis Clients</h1>
+                <div className="admin-review-separator"></div>
                 <p>Modération et suivi de la satisfaction.</p>
             </header>
 
-            <div className="admin-table-container">
-                <table className="admin-table">
+            <div className="admin-review-table-container">
+                <table className="admin-review-table">
                     <thead>
                         <tr>
                             <th>Auteur</th>
@@ -45,14 +45,14 @@ export const AdminReviewList = () => {
                                     </div>
                                 </td>
                                 <td data-label="Commentaire">
-                                    <div className="admin-comment-truncate" title={review.content}>
+                                    <div className="admin-review-comment" title={review.content}>
                                         {review.content.substring(0, 50)}...
                                     </div>
                                 </td>
                                 <td data-label="Actions">
                                     <button
                                         onClick={() => promptDelete(review)}
-                                        className="btn-delete-brutal"
+                                        className="admin-review-btn-delete"
                                     >
                                         Supprimer
                                     </button>

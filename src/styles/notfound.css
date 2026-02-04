@@ -15,7 +15,7 @@
 }
 
 .notfound-container::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -26,7 +26,7 @@
 }
 
 .notfound-container::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -79,11 +79,103 @@
   margin-bottom: 1rem;
 }
 
+/* --- RESPONSIVE --- */
+
+/* Tablette paysage (1024px) */
+@media (max-width: 1024px) {
+  .notfound-container::before {
+    height: 180px;
+  }
+
+  .notfound-content-card {
+    padding: 55px 38px;
+    max-width: 480px;
+  }
+
+  .notfound-code {
+    font-size: 7rem;
+  }
+
+  .notfound-title {
+    font-size: 1.7rem;
+  }
+
+  .notfound-text {
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablette portrait (768px) */
+@media (max-width: 768px) {
+  .notfound-container::before {
+    height: 150px;
+  }
+
+  .notfound-content-card {
+    padding: 50px 35px;
+    max-width: 450px;
+  }
+
+  .notfound-code {
+    font-size: 6rem;
+  }
+
+  .notfound-title {
+    font-size: 1.5rem;
+  }
+
+  .notfound-text {
+    font-size: 1rem;
+  }
+}
+
+/* Smartphone portrait/paysage (480px) */
 @media (max-width: 480px) {
+  .notfound-container::before {
+    height: 120px;
+  }
+
+  .notfound-container::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .notfound-content-card {
+    padding: 40px 25px;
+    max-width: 400px;
+    border-radius: 30px;
+  }
+
+  .notfound-code {
+    font-size: 5.5rem;
+    letter-spacing: -3px;
+  }
+
+  .notfound-title {
+    font-size: 1.3rem;
+  }
+
+  .notfound-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Smartphone portrait (375px) */
+@media (max-width: 375px) {
+  .notfound-container::before {
+    height: 100px;
+  }
+
+  .notfound-content-card {
+    padding: 40px 20px;
+    max-width: 340px;
+  }
+
   .notfound-code {
     font-size: 5rem;
   }
-  .notfound-content-card {
-    padding: 40px 20px;
+
+  .notfound-title {
+    font-size: 1.2rem;
   }
 }

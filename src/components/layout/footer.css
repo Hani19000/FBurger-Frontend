@@ -1,6 +1,6 @@
 .footer {
   background-color: var(--color-gray);
-  background-image: url('../../../public/images/texture.png');
+  background-image: url("../../../public/images/texture.png");
   background-repeat: repeat;
   padding: 4rem 1rem 2rem 1rem;
   text-align: center;
@@ -64,11 +64,13 @@
   justify-content: center;
   gap: 1.5rem;
 }
+
 .footer-socials a {
   color: var(--color-primary);
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
+
 .footer__socials a:hover {
   color: var(--color-secondary);
 }
@@ -82,7 +84,29 @@
   gap: 2rem;
 }
 
+/* --- RESPONSIVE --- */
+
+/* Tablette paysage (1024px) */
 @media (max-width: 1024px) {
+  .footer {
+    padding: 3.5rem 1rem 2rem 1rem;
+  }
+
+  .footer-content {
+    gap: 2.2rem;
+  }
+
+  .footer-logo {
+    font-size: 1.8rem;
+  }
+
+  .footer-links {
+    gap: 2.5rem;
+  }
+}
+
+/* Tablette portrait (768px) */
+@media (max-width: 768px) {
   .footer {
     padding: 3rem 1rem;
   }
@@ -91,22 +115,74 @@
     gap: 2rem;
   }
 
+  .footer-logo {
+    font-size: 1.6rem;
+  }
+
   .footer-links {
     flex-direction: column;
     gap: 1.2rem;
   }
 
   .footer-divider hr {
-    width: 90%;
-  }
-
-  .footer-bottom {
-    padding: 2rem 1rem;
-    gap: 2rem;
+    width: 85%;
   }
 
   .footer-copyright {
     flex-direction: column;
     gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Smartphone portrait/paysage (480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 0.8rem 1.5rem 0.8rem;
+  }
+
+  .footer-logo {
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-link {
+    font-size: 0.85rem;
+  }
+
+  .footer__socials {
+    gap: 1.2rem;
+  }
+
+  .footer-socials a {
+    font-size: 1.3rem;
+  }
+
+  .footer-divider hr {
+    width: 90%;
+  }
+}
+
+/* Smartphone portrait (375px) */
+@media (max-width: 375px) {
+  .footer {
+    padding: 2rem 0.8rem 1.2rem 0.8rem;
+  }
+
+  .footer-content {
+    gap: 1.8rem;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+    padding: 0 10px;
   }
 }

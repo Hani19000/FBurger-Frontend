@@ -11,36 +11,36 @@ export const AdminUserList = () => {
     if (loading) return <div className="admin-loader">Synchronisation...</div>;
 
     return (
-        <div className="admin-list-wrapper">
-            <header className="admin-list-header">
-                <h1 className="admin-title">Membres</h1>
-                <div className="admin-separator"></div>
+        <div className="admin-users-wrapper">
+            <header className="admin-users-header">
+                <h1 className="admin-users-title">Membres</h1>
+                <div className="admin-users-separator"></div>
                 <p>Gestion des accès et de la communauté.</p>
             </header>
 
-            <div className="admin-table-container">
-                <table className="admin-table">
+            <div className="admin-users-table-container">
+                <table className="admin-users-table">
                     <thead>
                         <tr><th>Utilisateur</th><th>Email</th><th>Rôle</th><th>Actions</th></tr>
                     </thead>
                     <tbody>
                         {users.map(user => (
                             <tr key={user.id}>
-                                <td className="font-nippo">{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    <span className={`role-badge ${(user.displayRole || 'user').toLowerCase()}`}>
+                                <td className="font-nippo" data-label="Utilisateur">{user.username}</td>
+                                <td data-label="Email">{user.email}</td>
+                                <td data-label="Rôle">
+                                    <span className={`admin-users-role-badge ${(user.displayRole || 'user').toLowerCase()}`}>
                                         {user.displayRole || 'USER'}
                                     </span>
                                 </td>
-                                <td>
-                                    <div className="admin-actions-group">
+                                <td data-label="Actions">
+                                    <div className="admin-users-actions-group">
                                         {user.displayRole !== 'ADMIN' && (
-                                            <button onClick={() => handleUpdate(user.id)} className="btn-promote-brutal">
+                                            <button onClick={() => handleUpdate(user.id)} className="admin-users-btn-promote">
                                                 Promouvoir
                                             </button>
                                         )}
-                                        <button onClick={() => promptDelete(user)} className="btn-delete-brutal">
+                                        <button onClick={() => promptDelete(user)} className="admin-users-btn-delete">
                                             Supprimer
                                         </button>
                                     </div>
