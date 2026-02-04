@@ -1,4 +1,5 @@
-import { useProductForm } from '../hooks/useProductForm';
+import { useProductForm } from '../hooks/useProductForm'
+import { PRODUCT_CATEGORIES } from '../../../constants/categories'
 import '../styles/AdminUserList.css';
 
 const ProductModal = ({ isOpen, onClose, onSave, product }) => {
@@ -31,13 +32,19 @@ const ProductModal = ({ isOpen, onClose, onSave, product }) => {
 
                     <div className="form-group">
                         <label className="font-nippo label-sm">CATÉGORIE *</label>
-                        <input
+                        <select
                             className="role-badge input-full"
                             value={formData.categorie}
                             onChange={e => handleChange('categorie', e.target.value)}
-                            placeholder="ex: Burger, Boissons..."
                             required
-                        />
+                        >
+                            <option value="">-- Choisir une catégorie --</option>
+                            {PRODUCT_CATEGORIES.map(cat => (
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="form-group">

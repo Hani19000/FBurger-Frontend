@@ -1,10 +1,10 @@
-const CATEGORIES = ['Tout', 'Burger', 'Poulets', 'Frites', 'Boissons'];
+import { ALL_CATEGORIES } from "../../constants/categories";
 
 const FilterBar = ({ currentFilter, onFilterChange }) => (
     <div className="filter-bar">
-        {CATEGORIES.map((category) => (
+        {ALL_CATEGORIES.map((category) => (
             <button
-                key={category} // la catégorie est unique et stable
+                key={category}
                 className={currentFilter === category ? 'active' : ''}
                 onClick={() => onFilterChange(category)}
             >

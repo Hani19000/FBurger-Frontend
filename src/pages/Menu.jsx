@@ -32,7 +32,10 @@ function Menu() {
 
   const displayProducts = activeFilter === 'Tout'
     ? products
-    : products.filter(product => product.categorie === activeFilter);
+    : products.filter(product => {
+      // On compare en ignorant la casse et les espaces superflus
+      return product.categorie?.trim().toLowerCase() === activeFilter.trim().toLowerCase();
+    });
 
   return (
     <main className="menu-page">
