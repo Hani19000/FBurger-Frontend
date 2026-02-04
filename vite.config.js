@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { fileURLToPath } from 'url'// Ajoute ceci
+import { fileURLToPath } from 'url'
 
 // Recréer __dirname
 const __filename = fileURLToPath(import.meta.url)
@@ -30,9 +30,24 @@ export default defineConfig({
       }
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Cette fonction trie les dépendances pour le code splitting
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            // Regroupe toutes les librairies externes dans un fichier 'vendor'
+            return 'vendor';
+          }
+        }
+      }
+    },
+    // On passe la limite à 1000kb pour être plus souple avec les librairies UI (Swiper, etc.)
+    chunkSizeWarningLimit: 1000
+  },
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/setupTests.js', // Optionnel, si tu as des config de setup
+    setupFiles: './src/setupTests.js'
   }
 })
