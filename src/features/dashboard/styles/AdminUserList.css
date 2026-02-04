@@ -157,8 +157,8 @@
   transition: all 0.1s ease-in-out;
   min-width: 90px;
   text-align: center;
-  background-color: #fff;
-  color: #000;
+  background-color: #ff4757;
+  color: var(--color-primary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -184,9 +184,6 @@
 }
 
 .btn-promote-brutal {
-  /* Hérite de base mais force le vert */
-  @extend .btn-delete-brutal;
-  background-color: #00ff88;
   border: 2px solid #000;
   padding: 0.5rem 1rem;
   font-family: var(--font-nippo);
@@ -194,27 +191,68 @@
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 3px 3px 0px #000;
-  transition: all 0.1s ease;
+  transition: all 0.1s ease-in-out;
+  min-width: 90px;
+  text-align: center;
+  background-color: #00ff88;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-promote-brutal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #000;
+  background-color: var(--color-gray);
+  color: var(--color-primary);
+}
+
+.btn-promote-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
 }
 
 .btn-edit {
-  background-color: #e6e3c0; /* Un beige doux pour l'édition */
+  background-color: #00ff88;
+  color: var(--color-black);
 }
 .btn-edit:hover {
-  background-color: #dcd8b0;
+  background-color: var(--color-gray);
+  color: var(--color-primary);
 }
 
 .btn-secondary {
-  background-color: #fff;
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-nippo);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.1s ease-in-out;
+  min-width: 90px;
+  text-align: center;
+  background-color: var(--color-gray);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-secondary:hover {
-  background-color: #f0f0f0;
+  background-color: #ff4757;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #000;
 }
 
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
+}
 /* Override spécifique pour le bouton Supprimer (Rouge au survol) */
 .btn-delete-brutal:not(.btn-primary):not(.btn-edit):hover {
-  background-color: #ff4757;
-  color: #fff;
+  background-color: var(--color-gray);
+  color: var(--color-primary);
 }
 
 /* =========================================

@@ -1,4 +1,3 @@
-// src/hooks/forms/useProductForm.js
 import { useState, useEffect } from 'react';
 
 const API_URL = import.meta.env.VITE_API_URL || "https://fburger-420b.onrender.com";

@@ -26,11 +26,9 @@ export const useReviews = () => {
                 }
             )
         )
-
         if (err) return
-
-        // OPTION "CLEAN" : On rafraîchit les données en arrière-plan sans bloquer l'UI
-        const updatedData = await fetchReviews(false); // false = pas de loader global
+        // On force un fetch complet pour récupérer les données "populées" par le serveur
+        const updatedData = await fetchReviews(false);
         setReviews(updatedData)
     }
 

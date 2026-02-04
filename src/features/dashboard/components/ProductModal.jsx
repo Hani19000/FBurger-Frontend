@@ -79,7 +79,7 @@ const ProductModal = ({ isOpen, onClose, onSave, product }) => {
                         <button type="submit" className="btn-delete-brutal btn-primary">
                             {product ? 'Mettre à jour' : 'Créer'}
                         </button>
-                        <button type="button" onClick={onClose} className="btn-delete-brutal btn-secondary">
+                        <button type="button" onClick={onClose} className="btn-secondary">
                             Annuler
                         </button>
                     </div>

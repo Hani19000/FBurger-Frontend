@@ -1,13 +1,17 @@
-import { useState } from 'react';
-import { useAdminReviews } from '../hooks/useAdminReviews.js';
-import ConfirmModal from './ConfirmModal';
-import StarRating from '../../../components/atoms/Star/StarRating.jsx';
-import '../styles/AdminUserList.css';
+import { useReviewListController } from '../hooks/controllers/useReviewListController.js'
+import ConfirmModal from './ConfirmModal'
+import StarRating from '../../../components/atoms/Star/StarRating.jsx'
+import '../styles/AdminUserList.css'
 
 export const AdminReviewList = () => {
-    const { reviews, loading, handleDelete } = useAdminReviews();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [reviewToDelete, setReviewToDelete] = useState(null);
+    const {
+        reviews,
+        loading,
+        isModalOpen,
+        setIsModalOpen,
+        promptDelete,
+        confirmDelete
+    } = useReviewListController();
 
     if (loading) return <div className="admin-loader">Synchronisation des avis...</div>;
 
@@ -33,7 +37,7 @@ export const AdminReviewList = () => {
                         {reviews.map(review => (
                             <tr key={review._id}>
                                 <td className="font-nippo" data-label="Auteur">
-                                    {review.userId?.username || "Anonyme"}
+                                    {review.userId?.username || review.user?.username || (typeof review.userId === 'string' ? "Utilisateur" : "Anonyme")}
                                 </td>
                                 <td data-label="Note">
                                     <div style={{ pointerEvents: 'none' }}>
@@ -47,7 +51,7 @@ export const AdminReviewList = () => {
                                 </td>
                                 <td data-label="Actions">
                                     <button
-                                        onClick={() => { setReviewToDelete(review); setIsModalOpen(true); }}
+                                        onClick={() => promptDelete(review)}
                                         className="btn-delete-brutal"
                                     >
                                         Supprimer
@@ -62,10 +66,7 @@ export const AdminReviewList = () => {
             <ConfirmModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                onConfirm={async () => {
-                    await handleDelete(reviewToDelete._id);
-                    setIsModalOpen(false);
-                }}
+                onConfirm={confirmDelete}
                 title="Modération Avis"
                 message="Supprimer cet avis de manière irréversible ?"
             />

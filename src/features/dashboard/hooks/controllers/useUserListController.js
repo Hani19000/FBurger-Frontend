@@ -1,4 +1,3 @@
-// src/hooks/controllers/useUserListController.js
 import { useState } from 'react';
 import { useUsers } from '../useUsers';
 
